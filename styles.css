@@ -31,15 +31,19 @@ a:hover {
 header {
   background-color: #003366; /* Navy blue background */
   color: white; /* White text */
-  padding: 20px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  padding: 20px;
+}
+
+nav {
+  display: flex; 
+  justify-content: space-between; /* Spreads the items across the width */
+  align-items: center; /* Centers the items vertically */
+  max-width: 1100px; 
+  margin: 0 auto; /* Centers the entire nav bar */
 }
 
 nav ul {
   display: flex;
-  justify-content: center;
   list-style-type: none;
 }
 
@@ -51,11 +55,24 @@ nav ul li a {
   font-size: 1.1em;
   font-weight: 500;
   color: white;
-  text-transform: uppercase; /* Optional: Make nav links all caps */
+  text-transform: uppercase;
 }
 
 nav ul li a:hover {
   color: #ff9900; /* Hover effect */
+}
+
+nav .name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+nav .name a {
+  color: white;
+}
+
+nav .name a:hover {
+  color: #ff9900; /* Hover effect on your name */
 }
 
 section {
