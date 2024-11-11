@@ -360,7 +360,7 @@ nav ul li a.active {
 #about-me .image-container {
   flex: 0 0 auto; /* Prevent stretching, maintain natural size */
   width: 150px; /* Set width */
-  height: auto; /* Allow height to adjust dynamically */
+  height: 150px; /* Allow height to adjust dynamically */
   margin-right: 20px;
   border-radius: 50%; /* Make the image circular */
   overflow: hidden; /* Crop any overflow */
