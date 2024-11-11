@@ -287,7 +287,7 @@ nav ul li a:hover {
 }
 
 /* Home link specific styling (larger and more prominent) */
-nav ul li.Sana-Pandey a {
+nav ul li.home a {
   font-size: 1.5em; /* Make Home link larger */
   font-weight: 700; /* Make Home link bold */
   color: white; /* Ensure Home link is white */
