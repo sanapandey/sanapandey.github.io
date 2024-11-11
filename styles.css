@@ -265,7 +265,6 @@ header .logo a {
   font-size: 2em;
   font-weight: bold;
   text-decoration: none;
-  text-transform: uppercase; /* Optional: makes name stand out */
   transition: color 0.3s ease;
 }
 
@@ -352,20 +351,15 @@ nav ul li a.active {
 }
 
 #about-me .image-container {
-  flex: 0 0 150px; /* Set a fixed width for the image container */
-  height: 150px; /* Set a fixed height for the container to maintain circle aspect */
+  flex: 1; /* Allow the image to take up the same amount of space as the text */
+  max-width: 45%; /* Limit the maximum width of the image to 45% of the container */
   margin-right: 20px; /* Add space between the image and text */
-  overflow: hidden; /* Hide anything outside the circle */
-  border-radius: 50%; /* Make the container a circle */
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 #about-me img {
   width: 100%; /* Make the image take up 100% of the container width */
   height: auto; /* Maintain aspect ratio */
-  border-radius: 8px; /* Rounded corners for the image */
+  border-radius: 50%; /* Rounded corners for the image */
 }
 
 #about-me .text-container {
