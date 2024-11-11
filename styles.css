@@ -196,22 +196,6 @@ a:hover {
   text-decoration: underline;
 }
 
-nav ul {
-  display: flex;
-  list-style-type: none;
-  padding-left: 10px; /* Adds padding to the left of nav */
-}
-
-nav ul li {
-  margin-right: 20px;
-}
-
-nav .name {
-  font-size: 1.5em;
-  font-weight: bold;
-  padding-right: 10px; /* Adds space around the name */
-}
-
 footer {
   text-align: center;
   padding: 20px;
@@ -265,9 +249,68 @@ button:hover {
 /* Header Styling */
 header {
   background: linear-gradient(135deg, #003366, #00507d); /* Subtle gradient from dark blue to a lighter blue */
-  padding: 15px 20px; /* Adds space inside the header */
+  padding: 20px 40px; /* Add more vertical space */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
   position: sticky;
   top: 0;
   z-index: 10;
+  height: 80px; /* Make header slightly taller */
+}
+
+/* Navigation links container */
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* Each list item in the navigation */
+nav ul li {
+  margin-right: 20px; /* Space out the navigation items */
+}
+
+/* Styling for the links */
+nav ul li a {
+  text-decoration: none;
+  color: white; /* Set the link color to white */
+  font-weight: bold;
+  font-size: 1.2em; /* Slightly smaller font size for non-Home links */
+  padding: 10px 15px;
+  border-radius: 5px; /* Rounded corners for buttons */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for links */
+nav ul li a:hover {
+  background-color: #ff9900; /* Highlight links on hover with orange */
+  color: white; /* Keep the text white */
+}
+
+/* Home link specific styling (larger and more prominent) */
+nav ul li.home a {
+  font-size: 1.5em; /* Make Home link larger */
+  font-weight: 700; /* Make Home link bold */
+  color: white; /* Ensure Home link is white */
+  text-transform: uppercase; /* Uppercase for the Home link to make it stand out more */
+}
+
+/* Styling for the name in the header */
+.name {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+  padding-left: 20px; /* Space between name and navigation */
+}
+
+.name a {
+  color: white;
+  text-decoration: none;
+}
+
+.name a:hover {
+  color: #ff9900; /* Change the name color to orange when hovered */
 }
