@@ -325,9 +325,14 @@ nav ul li.home a {
 }
 
 #about-me .image-container {
-  flex: 1; /* Allow the image to take up the same amount of space as the text */
-  max-width: 45%; /* Limit the maximum width of the image to 45% of the container */
+  flex: 0 0 150px; /* Set a fixed width for the image container */
+  height: 150px; /* Set a fixed height for the container to maintain circle aspect */
   margin-right: 20px; /* Add space between the image and text */
+  overflow: hidden; /* Hide anything outside the circle */
+  border-radius: 50%; /* Make the container a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #about-me img {
