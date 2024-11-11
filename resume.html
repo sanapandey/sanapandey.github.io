@@ -8,16 +8,25 @@
 </head>
 <body>
   <!-- Header with navigation links -->
-  <header>
-    <nav>
-      <ul>
-        <li class = "home"><a href="index.html"><strong>Sana Pandey</strong></a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="resume.html">Resume</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Header with clickable name/logo and navigation -->
+<header>
+  <div class="logo">
+    <a href="index.html">Your Name</a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="/publications">Publications</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/resume">Resume</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Progress Bar -->
+<div id="progress-bar">
+  <div class="progress"></div>
+</div>
+
 
   <section id="resume">
     <p>For the most current version, please reach out via email! Last date of update: September 2024. </p>
@@ -29,5 +38,17 @@
   <footer>
     <p>Contact me at sanapandey at berkeley dot edu</p>
   </footer>
+
+  <script>
+  // Function to update the progress bar as the user scrolls
+  window.onscroll = function() {
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollPercent = (scrollPosition / docHeight) * 100;
+
+    document.querySelector("#progress-bar .progress").style.width = scrollPercent + "%";
+  };
+</script>
+
 </body>
 </html>
