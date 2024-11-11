@@ -478,6 +478,37 @@ button.resume-button:hover {
     padding: 10px 20px;
   }
 }
+/* Resume Page Styling */
+#resume {
+  background-color: #f7f7f7; /* Light background to match contact page */
+  padding: 40px; /* Same padding for consistency */
+  border-radius: 8px; /* Same rounded corners for consistency */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  margin-top: 40px; /* Consistent spacing from top */
+}
+
+#resume h2 {
+  font-size: 2.4em;
+  color: #003366;
+  margin-bottom: 15px;
+}
+
+#resume p {
+  font-size: 1.2em;
+  line-height: 1.6; /* More space between lines of text */
+  color: #333;
+  margin-bottom: 20px; /* Adds spacing between paragraphs */
+}
+
+#resume a {
+  color: #003366; /* Keep the links consistent with the header color */
+  text-decoration: none; /* Remove underline for a clean look */
+}
+
+#resume a:hover {
+  color: #0077cc; /* Highlight link color on hover */
+}
+
 
 
 
