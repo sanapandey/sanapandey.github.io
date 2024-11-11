@@ -131,6 +131,50 @@ h1, h2, h3 {
   font-weight: bold;
 }
 
+#contact {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  margin-top: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#contact h2 {
+  font-size: 2.2em;
+  color: #003366;
+  margin-bottom: 15px;
+}
+
+#contact p {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.contact-links {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.contact-links li {
+  margin-bottom: 15px;
+}
+
+.contact-links a {
+  text-decoration: none;
+  font-size: 1.3em;
+  color: #003366;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-links a:hover {
+  color: white;
+  background-color: #003366;
+}
+
 /* Links */
 a {
   color: #003366;
