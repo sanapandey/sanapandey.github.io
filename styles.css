@@ -487,15 +487,18 @@ button.resume-button:hover {
   margin-top: 40px; /* Consistent spacing from top */
 }
 
+/* Ensure the header on the resume page matches "Contact Me" in font size */
 #resume h2 {
-  font-size: 2.4em;
+  font-size: 2.4em; /* Same font size for headers */
+  font-weight: bold; /* Make it bold if it's not already */
   color: #003366;
   margin-bottom: 15px;
 }
 
+/* Ensure the text style matches the contact page */
 #resume p {
-  font-size: 1.2em;
-  line-height: 1.6; /* More space between lines of text */
+  font-size: 1.2em; /* Same font size for text */
+  line-height: 1.6; /* Consistent spacing between lines of text */
   color: #333;
   margin-bottom: 20px; /* Adds spacing between paragraphs */
 }
@@ -508,6 +511,7 @@ button.resume-button:hover {
 #resume a:hover {
   color: #0077cc; /* Highlight link color on hover */
 }
+
 
 
 
