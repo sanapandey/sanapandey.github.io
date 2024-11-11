@@ -24,7 +24,7 @@ section {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Public Sans', sans-serif; /* Public Sans for headers */
+  font-family: 'Proxima Nova', sans-serif; /* Public Sans for headers */
   color: #003366; /* Navy blue for headers */
   margin-bottom: 20px; /* Adds space below headers */
 }
@@ -33,6 +33,54 @@ h1, h2, h3, h4, h5, h6 {
 h1, h2, h3 {
   padding-left: 10px;
   padding-right: 10px;
+}
+
+/* Updates Section */
+#updates {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#updates h2 {
+  font-size: 2.2em;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+.update-list {
+  list-style-type: none; /* Remove bullet points */
+  padding-left: 0;
+}
+
+.update-list li {
+  background-color: #f9f9f9;
+  border-left: 4px solid #003366; /* Adds a left border for emphasis */
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.update-list li:hover {
+  background-color: #f1f1f1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.update-list li strong {
+  color: #003366;
+}
+
+a {
+  color: #003366;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff9900;
+  text-decoration: underline;
 }
 
 nav ul {
