@@ -9,16 +9,23 @@
 <body>
   <!-- Header with navigation links -->
   <header>
-    <nav>
-      <ul>
-        <li class = "home"><strong><a href = "index.html">Sana Pandey</a></strong></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="resume.html">Resume</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="logo">
+    <a href="index.html">Your Name</a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="/publications">Publications</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/resume">Resume</a></li>
+    </ul>
+  </nav>
+</header>
 
+<!-- Progress Bar -->
+<div id="progress-bar">
+  <div class="progress"></div>
+</div>
+  
   <section id="publications">
     <h2>Published Work</h2>
     <ul class = "publication-list">
@@ -67,5 +74,17 @@ There is strong evidence that ranking by predicted engagement is effective in in
   <footer>
     <p>Contact me at sanapandey at berkeley dot edu</p>
   </footer>
+
+  <script>
+  // Function to update the progress bar as the user scrolls
+  window.onscroll = function() {
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollPercent = (scrollPosition / docHeight) * 100;
+
+    document.querySelector("#progress-bar .progress").style.width = scrollPercent + "%";
+  };
+</script>
+
 </body>
 </html>
