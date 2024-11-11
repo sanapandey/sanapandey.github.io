@@ -6,16 +6,16 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif; /* Modern sans-serif font */
+  font-family: 'Public Sans', sans-serif; /* Use Public Sans font */
   background-color: #f4f4f4; /* Light gray background for contrast */
   color: #333; /* Dark gray text for readability */
   line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lato', sans-serif; /* A clean, modern font for headers */
+  font-family: 'Public Sans', sans-serif; /* Apply Public Sans to headers */
   color: #003366; /* Navy blue for headers */
-  text-transform: uppercase; /* Optional: Uppercase text for headers */
+  /* Removed text-transform: uppercase to keep headers in normal case */
 }
 
 a {
@@ -35,11 +35,11 @@ header {
 }
 
 nav {
-  display: flex; 
-  justify-content: space-between; /* Spreads the items across the width */
-  align-items: center; /* Centers the items vertically */
-  max-width: 1100px; 
-  margin: 0 auto; /* Centers the entire nav bar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto; /* Centers the navigation bar */
 }
 
 nav ul {
@@ -55,7 +55,6 @@ nav ul li a {
   font-size: 1.1em;
   font-weight: 500;
   color: white;
-  text-transform: uppercase;
 }
 
 nav ul li a:hover {
@@ -63,108 +62,4 @@ nav ul li a:hover {
 }
 
 nav .name {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-nav .name a {
-  color: white;
-}
-
-nav .name a:hover {
-  color: #ff9900; /* Hover effect on your name */
-}
-
-section {
-  padding: 40px 20px;
-  margin: 20px auto;
-  max-width: 1100px;
-  background-color: white; /* White background for sections */
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for a modern effect */
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #003366; /* Same navy blue footer */
-  color: white;
-  font-size: 0.9em;
-}
-
-footer a {
-  color: white;
-}
-
-footer a:hover {
-  color: #ff9900; /* Footer link hover */
-}
-
-#bio {
-  text-align: center;
-}
-
-#bio img {
-  max-width: 200px;
-  border-radius: 50%;
-  margin-top: 20px;
-}
-
-ul {
-  list-style-type: none;
-}
-
-ul li {
-  margin-bottom: 10px;
-  font-size: 1.1em;
-}
-
-ul li strong {
-  font-weight: 600;
-}
-
-h2 {
-  font-size: 2em;
-  color: #003366; /* Consistent navy blue color for section titles */
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-h3 {
-  font-size: 1.5em;
-  color: #003366; /* Navy blue for subheadings */
-  margin-top: 30px;
-}
-
-#contact ul {
-  text-align: left;
-  padding-left: 20px;
-}
-
-#contact ul li {
-  font-size: 1.1em;
-  margin-bottom: 10px;
-}
-
-#contact ul li a {
-  color: #003366;
-}
-
-#contact ul li a:hover {
-  color: #ff9900; /* Consistent hover effect */
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #003366; /* Navy blue button */
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.1em;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #ff9900; /* Yellow hover effect for buttons */
-}
+  font-size: 1.5
