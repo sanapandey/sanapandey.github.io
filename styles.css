@@ -480,7 +480,7 @@ button.resume-button:hover {
 }
 /* Resume Page Styling */
 #resume {
-  background-color: #f7f7f7; /* Light background to match contact page */
+  background-color: white; /* Light background to match contact page */
   padding: 40px; /* Same padding for consistency */
   border-radius: 8px; /* Same rounded corners for consistency */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
@@ -489,7 +489,7 @@ button.resume-button:hover {
 
 /* Ensure the header on the resume page matches "Contact Me" in font size */
 #resume h2 {
-  font-size: 2.4em; /* Same font size for headers */
+  font-size: 2.2em; /* Same font size for headers */
   font-weight: bold; /* Make it bold if it's not already */
   color: #003366;
   margin-bottom: 15px;
