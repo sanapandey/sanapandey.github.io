@@ -261,3 +261,13 @@ button {
 button:hover {
   background-color: #ff9900;
 }
+
+/* Header Styling */
+header {
+  background: linear-gradient(135deg, #003366, #00507d); /* Subtle gradient from dark blue to a lighter blue */
+  padding: 15px 20px; /* Adds space inside the header */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
