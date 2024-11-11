@@ -351,32 +351,33 @@ nav ul li a.active {
 
 #about-me .top-section {
   display: flex;
-  align-items: stretch; /* Stretch the items to match height */
-  justify-content: space-between;
+  align-items: center; /* This centers the image vertically with the text */
+  justify-content: flex-start; /* Left align the image and text */
   width: 100%;
   margin-bottom: 20px; /* Space below the top section */
 }
 
 #about-me .image-container {
-  flex: 0 0 auto; /* Prevent stretching, maintain natural size */
-  width: 150px; /* Set width */
-  height: 150px; /* Allow height to adjust dynamically */
-  margin-right: 20px;
-  border-radius: 50%; /* Make the image circular */
-  overflow: hidden; /* Crop any overflow */
+  width: 150px; /* Fixed width for image container */
+  height: 150px; /* Fixed height for image container */
+  border-radius: 50%; /* Circular container */
+  overflow: hidden; /* Ensure image doesn't overflow */
+  margin-right: 20px; /* Space between image and text */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 #about-me img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+  object-fit: cover; /* Ensure the image covers the container while maintaining aspect ratio */
+  display: block; /* Remove extra space below the image */
 }
 
 #about-me .text-container {
-  flex: 1; /* Take up remaining space */
+  flex: 1; /* Allow the text to take up the remaining space */
   display: flex;
-  flex-direction: column; /* Stack the header and paragraph vertically */
-  justify-content: space-between; /* Ensure the paragraph stretches fully */
+  flex-direction: column; /* Stack header and paragraph vertically */
+  justify-content: center; /* Vertically center the content within the text container */
 }
 
 #about-me .text-container h2 {
@@ -390,7 +391,9 @@ nav ul li a.active {
   line-height: 1.6;
   color: #333;
   margin: 0; /* Remove margin from paragraph */
+  text-align: left; /* Left align paragraph text */
 }
+
 
 /* Styling for the second part of the About Me section (below image) */
 #about-me .bio {
