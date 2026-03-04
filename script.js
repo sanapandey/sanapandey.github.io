@@ -14,5 +14,18 @@
     update();
   }
 
+  // Scroll-linked background: set ratio 0..1 for use in CSS gradient/wash
+  function initScrollBackground() {
+    function update() {
+      var h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var y = document.documentElement.scrollTop || document.body.scrollTop;
+      var ratio = h > 0 ? Math.min(1, y / h) : 0;
+      document.body.style.setProperty('--scroll-ratio', ratio);
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
   initProgressBar();
+  initScrollBackground();
 })();
