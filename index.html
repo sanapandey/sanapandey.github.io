@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sana Pandey - Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,62 +28,63 @@
     <div class="progress"></div>
   </div>
 
-  <!-- Hero -->
-  <div class="hero">
-    <h1>Sana Pandey</h1>
-    <p class="tagline">Building safer, more robust AI systems — from evaluations and interpretability to policy and recommendation systems.</p>
-  </div>
+  <div class="landing-row">
+    <div class="hero-col">
+      <div class="hero">
+        <h1>Sana Pandey</h1>
+        <p class="tagline">Building safer, more robust AI systems — from evaluations and interpretability to policy and recommendation systems.</p>
+      </div>
+    </div>
+    <div class="research-col">
+      <section id="research-directions">
+        <h2>Research Directions</h2>
+        <p>Click a dot to read a short description of my work in that area.</p>
 
-  <!-- Research directions: network + click-to-show descriptions -->
-  <section id="research-directions">
-    <h2>Research Directions</h2>
-    <p>Click a theme to read a short description of my work in that area.</p>
-
-    <svg class="research-network-viz" viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" aria-label="Research themes network">
-      <!-- Edges (connections between themes) -->
-      <line x1="210" y1="55"  x2="120" y2="120" stroke="var(--color-border)" stroke-width="1.5"/>
-      <line x1="210" y1="55"  x2="300" y2="120" stroke="var(--color-border)" stroke-width="1.5"/>
-      <line x1="210" y1="55"  x2="210" y2="165" stroke="var(--color-border)" stroke-width="1.5"/>
-      <line x1="120" y1="120" x2="80"  y2="200" stroke="var(--color-border)" stroke-width="1.5"/>
-      <line x1="120" y1="120" x2="210" y2="165" stroke="var(--color-border)" stroke-width="1.5"/>
-      <line x1="300" y1="120" x2="340" y2="200" stroke="var(--color-border)" stroke-width="1.5"/>
-      <line x1="300" y1="120" x2="210" y2="165" stroke="var(--color-border)" stroke-width="1.5"/>
-      <line x1="210" y1="165" x2="210" y2="265" stroke="var(--color-border)" stroke-width="1.5"/>
-      <line x1="80"  y1="200" x2="210" y2="265" stroke="var(--color-border)" stroke-width="1.5"/>
-      <line x1="340" y1="200" x2="210" y2="265" stroke="var(--color-border)" stroke-width="1.5"/>
-      <!-- Nodes -->
-      <g class="node" data-theme="safe-ai" role="button" tabindex="0">
-        <circle cx="210" cy="45" r="28"/>
-        <text x="210" y="50">Safe AI</text>
-      </g>
-      <g class="node" data-theme="recommendations" role="button" tabindex="0">
-        <circle cx="105" cy="120" r="26"/>
-        <text x="105" y="125">Recommendations</text>
-      </g>
-      <g class="node" data-theme="interpretability" role="button" tabindex="0">
-        <circle cx="315" cy="120" r="26"/>
-        <text x="315" y="125">Interpretability</text>
-      </g>
-      <g class="node" data-theme="policy-govai" role="button" tabindex="0">
-        <circle cx="210" cy="165" r="26"/>
-        <text x="210" y="170">Policy / GovAI</text>
-      </g>
-      <g class="node" data-theme="llm-benchmarking" role="button" tabindex="0">
-        <circle cx="65" cy="200" r="24"/>
-        <text x="65" y="205">LLM Benchmarks</text>
-      </g>
-      <g class="node" data-theme="clinical-ai" role="button" tabindex="0">
-        <circle cx="355" cy="200" r="24"/>
-        <text x="355" y="205">Clinical AI</text>
-      </g>
-      <g class="node" data-theme="nlp" role="button" tabindex="0">
-        <circle cx="210" cy="265" r="24"/>
-        <text x="210" y="270">NLP</text>
-      </g>
-    </svg>
+        <svg class="research-network-viz" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" aria-label="Research themes network">
+          <!-- Edges -->
+          <line x1="200" y1="50"  x2="110" y2="110" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="200" y1="50"  x2="290" y2="110" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="200" y1="50"  x2="200" y2="155" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="110" y1="110" x2="70"  y2="185" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="110" y1="110" x2="200" y2="155" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="290" y1="110" x2="330" y2="185" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="290" y1="110" x2="200" y2="155" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="200" y1="155" x2="200" y2="250" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="70"  y1="185" x2="200" y2="250" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="330" y1="185" x2="200" y2="250" stroke="var(--color-border)" stroke-width="1.5"/>
+          <!-- Nodes: dot + label outside -->
+          <g class="node" data-theme="safe-ai" role="button" tabindex="0">
+            <circle cx="200" cy="45" r="6"/>
+            <text x="200" y="32" text-anchor="middle">Safe AI</text>
+          </g>
+          <g class="node" data-theme="recommendations" role="button" tabindex="0">
+            <circle cx="105" cy="110" r="6"/>
+            <text x="88" y="114" text-anchor="end">Recommendations</text>
+          </g>
+          <g class="node" data-theme="interpretability" role="button" tabindex="0">
+            <circle cx="295" cy="110" r="6"/>
+            <text x="312" y="114" text-anchor="start">Interpretability</text>
+          </g>
+          <g class="node" data-theme="policy-govai" role="button" tabindex="0">
+            <circle cx="200" cy="155" r="6"/>
+            <text x="200" y="178" text-anchor="middle">Policy / GovAI</text>
+          </g>
+          <g class="node" data-theme="llm-benchmarking" role="button" tabindex="0">
+            <circle cx="65" cy="185" r="6"/>
+            <text x="48" y="189" text-anchor="end">LLM Benchmarks</text>
+          </g>
+          <g class="node" data-theme="clinical-ai" role="button" tabindex="0">
+            <circle cx="335" cy="185" r="6"/>
+            <text x="352" y="189" text-anchor="start">Clinical AI</text>
+          </g>
+          <g class="node" data-theme="nlp" role="button" tabindex="0">
+            <circle cx="200" cy="250" r="6"/>
+            <text x="200" y="268" text-anchor="middle">NLP</text>
+          </g>
+        </svg>
 
     <div class="research-description-panel" id="research-panel" aria-live="polite">
-      <p class="hint" id="research-hint">Click a node above to see a short description of my work in that area.</p>
+      <p class="hint" id="research-hint">Click a dot above to see a short description of my work in that area.</p>
       <!-- EDIT YOUR THEME DESCRIPTIONS BELOW. Each .research-description div has data-theme matching the node (safe-ai, recommendations, interpretability, policy-govai, llm-benchmarking, clinical-ai, nlp). Replace the placeholder text with your own. -->
       <div class="research-description" data-theme="safe-ai" id="desc-safe-ai">
         <h3>Safe AI &amp; Evaluations</h3>
@@ -111,7 +115,9 @@
         <p>I worked on applications of graph neural networks in token prediction at Apple, and constructed a new pipeline from scratch for sentiment clustering at Woebot Health. NLP was my first love :).</p>
       </div>
     </div>
-  </section>
+      </section>
+    </div>
+  </div>
 
   <section id="about-me">
     <h2>About Me</h2>
