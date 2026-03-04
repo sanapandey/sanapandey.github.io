@@ -86,7 +86,7 @@ body {
   position: relative;
 }
 
-/* Scroll-linked color wash: intensifies as you scroll down */
+/* Scroll-linked wash: subtle overlay that intensifies as you scroll (sits behind content) */
 body::after {
   content: '';
   position: fixed;
@@ -96,13 +96,13 @@ body::after {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: var(--scroll-ratio);
+  opacity: calc(0.15 + 0.5 * var(--scroll-ratio));
   background: linear-gradient(180deg,
     transparent 0%,
-    rgba(26, 77, 92, 0.05) 35%,
-    rgba(196, 92, 62, 0.06) 65%,
-    rgba(26, 77, 92, 0.1) 100%);
-  transition: opacity 0.15s ease-out;
+    rgba(26, 77, 92, 0.06) 40%,
+    rgba(196, 92, 62, 0.07) 70%,
+    rgba(26, 77, 92, 0.12) 100%);
+  transition: opacity 0.2s ease-out;
 }
 
 body > * {
@@ -115,13 +115,52 @@ main.page-content {
   animation: pageEnter 0.5s ease-out forwards;
 }
 
-/* Sections: full-width flow, no card */
+/* Sections: full-width flow, no card; gradient bands separate sections */
 section {
+  position: relative;
   padding: var(--section-padding) clamp(24px, 5vw, 48px);
   margin: 0 auto var(--space-section);
   max-width: var(--content-max-width);
   opacity: 0;
   animation: fadeInUp 0.55s ease-out forwards;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(26, 77, 92, 0.05) 0%,
+    transparent 50%,
+    rgba(26, 77, 92, 0.04) 100%);
+}
+
+#research-directions::before {
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(26, 77, 92, 0.04) 50%,
+    rgba(26, 77, 92, 0.08) 100%);
+}
+
+#about-me::before {
+  background: linear-gradient(180deg,
+    rgba(26, 77, 92, 0.06) 0%,
+    rgba(26, 77, 92, 0.03) 30%,
+    rgba(196, 92, 62, 0.04) 70%,
+    rgba(196, 92, 62, 0.07) 100%);
+}
+
+#updates::before {
+  background: linear-gradient(180deg,
+    rgba(196, 92, 62, 0.05) 0%,
+    rgba(196, 92, 62, 0.02) 40%,
+    transparent 100%);
 }
 
 section:first-of-type {
@@ -136,6 +175,7 @@ section:nth-of-type(5) { animation-delay: 0.33s; }
 
 /* ========== Landing row: hero left, research right ========== */
 .landing-row {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: clamp(24px, 4vw, 56px);
@@ -143,6 +183,22 @@ section:nth-of-type(5) { animation-delay: 0.33s; }
   margin: var(--space-section) auto var(--space-section);
   padding: 0 clamp(24px, 5vw, 48px);
   align-items: flex-start;
+}
+
+.landing-row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(26, 77, 92, 0.05) 0%,
+    transparent 60%,
+    rgba(26, 77, 92, 0.04) 100%);
 }
 
 .hero-col {
@@ -212,11 +268,10 @@ section:nth-of-type(5) { animation-delay: 0.33s; }
 
 #research-directions .research-network-viz .node {
   cursor: pointer;
-  transition: transform var(--transition), filter var(--transition);
+  transition: filter var(--transition);
 }
 
 #research-directions .research-network-viz .node:hover {
-  transform: scale(1.15);
   filter: brightness(1.05);
 }
 
@@ -252,9 +307,10 @@ section:nth-of-type(5) { animation-delay: 0.33s; }
   fill: var(--color-text);
 }
 
-/* Accent ball: moves along network, rests at each node */
+/* Accent ball: moves along network, rests at each node (never intercept clicks) */
 .accent-ball-wrap {
   transform-origin: 0 0;
+  pointer-events: none;
 }
 
 .accent-ball {

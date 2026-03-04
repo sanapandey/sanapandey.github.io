@@ -16,7 +16,7 @@
   var INITIAL_DELAY_MS = 1800;
   var BALL_DURATION_MS = 600;
   var lastClickTime = 0;
-  var CLICK_DEBOUNCE_MS = 500;
+  var CLICK_DEBOUNCE_MS = 800;
 
   var nodePositions = themes.map(function (theme) {
     var g = document.querySelector('#research-directions .node[data-theme="' + theme + '"]');
@@ -103,19 +103,23 @@
   }
 
   function handleNodeClick(e) {
+    var target = e.target.closest('.node');
+    if (!target) return;
     e.preventDefault();
     e.stopPropagation();
+    stopCycling();
+
     var now = Date.now();
     if (now - lastClickTime < CLICK_DEBOUNCE_MS) return;
     lastClickTime = now;
 
-    var target = e.target.closest('.node');
-    if (!target) return;
     var theme = target.getAttribute('data-theme');
     var index = themes.indexOf(theme);
     if (index < 0) return;
 
-    stopCycling();
+    var visible = Array.prototype.find.call(descriptions, function (el) { return el.classList.contains('visible'); });
+    if (visible && visible.getAttribute('data-theme') === theme) return;
+
     showDescription(theme, index);
   }
 
@@ -133,8 +137,8 @@
   }
 
   nodes.forEach(function (node) {
-    node.addEventListener('click', handleNodeClick);
-    node.addEventListener('keydown', handleKeydown);
+    node.addEventListener('click', handleNodeClick, true);
+    node.addEventListener('keydown', handleKeydown, true);
   });
 
   ballWrap.setAttribute('transform', 'translate(' + nodePositions[0].cx + ',' + nodePositions[0].cy + ')');
