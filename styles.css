@@ -1,3 +1,23 @@
+/* ========== Design tokens ========== */
+:root {
+  --color-navy: #003366;
+  --color-navy-soft: rgba(0, 51, 102, 0.08);
+  --color-accent: #e68600;
+  --color-accent-hover: #ff9900;
+  --color-bg: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #555;
+  --color-border: rgba(0, 51, 102, 0.12);
+  --section-max-width: 720px;
+  --section-padding: clamp(28px, 5vw, 48px);
+  --space-section: clamp(32px, 6vw, 56px);
+  --radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --transition: 0.25s ease;
+}
+
 /* General Reset */
 * {
   margin: 0;
@@ -5,306 +25,313 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: 'Proxima Nova', sans-serif; /* Use Public Sans font */
-  background-color: #f4f4f4; /* Light gray background for contrast */
-  color: #333; /* Dark gray text for readability */
-  line-height: 1.6;
-  margin: 0 20px; /* Add margin around the whole page */
+/* Page load / section animations */
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* General Page Padding and Margins */
-section {
-  padding: 40px; /* Adds padding inside sections */
-  margin: 20px auto; /* Adds margin to separate sections */
-  max-width: 1100px; /* Limits the max width of sections */
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds light shadow for depth */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  section,
+  main.page-content {
+    animation: none;
+    opacity: 1;
+  }
+  .update-list li:hover,
+  .publication-list li:hover,
+  .contact-links a:hover,
+  #about-me .image-container:hover,
+  button.resume-button:hover,
+  header .logo a:hover {
+    transform: none;
+  }
+}
+
+body {
+  font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.65;
+  margin: 0 20px;
+}
+
+/* Main content wrapper: gentle entrance on load */
+main.page-content {
+  animation: pageEnter 0.5s ease-out forwards;
+}
+
+/* Sections: streamlined card */
+section {
+  padding: var(--section-padding);
+  margin: 0 auto var(--space-section);
+  max-width: var(--section-max-width);
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  opacity: 0;
+  animation: fadeInUp 0.55s ease-out forwards;
+}
+
+section:first-of-type {
+  margin-top: var(--space-section);
+}
+
+section:nth-of-type(1) { animation-delay: 0.05s; }
+section:nth-of-type(2) { animation-delay: 0.12s; }
+section:nth-of-type(3) { animation-delay: 0.19s; }
+section:nth-of-type(4) { animation-delay: 0.26s; }
+section:nth-of-type(5) { animation-delay: 0.33s; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Proxima Nova', sans-serif; /* Public Sans for headers */
-  color: #003366; /* Navy blue for headers */
-  margin-bottom: 20px; /* Adds space below headers */
+  font-family: 'Proxima Nova', sans-serif;
+  color: var(--color-navy);
+  margin-bottom: 0.5em;
+  font-weight: 600;
 }
 
-/* Additional Margin/Padding Adjustments */
-h1, h2, h3 {
-  padding-left: 10px;
-  padding-right: 10px;
+h2 {
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  letter-spacing: -0.02em;
+  padding-bottom: 0.35em;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 1.25rem;
 }
 
 /* Updates Section */
 #updates {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: var(--space-section);
 }
 
 #updates h2 {
-  font-size: 2.2em;
-  color: #003366;
-  margin-bottom: 20px;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+#updates > p {
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+  font-size: 1.05em;
 }
 
 .update-list {
-  list-style-type: none; /* Remove bullet points */
-  padding-left: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .update-list li {
-  background-color: #f9f9f9;
-  border-left: 4px solid #003366; /* Adds a left border for emphasis */
-  padding: 10px 20px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+  background: var(--color-navy-soft);
+  border-left: 3px solid var(--color-navy);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 0 8px 8px 0;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
 }
 
 .update-list li:hover {
-  background-color: #f1f1f1;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 51, 102, 0.06);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
 }
 
 .update-list li strong {
-  color: #003366;
+  color: var(--color-navy);
 }
 
 /* Publications Section */
-#publications {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 #publications h2 {
-  font-size: 2.2em;
-  color: #003366;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
 }
 
 .publication-list {
-  list-style-type: none; /* Remove bullet points */
-  padding-left: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .publication-list li {
-  background-color: #f9f9f9;
-  border-left: 4px solid #003366; /* Left border for emphasis */
-  padding: 15px 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+  background: var(--color-navy-soft);
+  border-left: 3px solid var(--color-navy);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0 8px 8px 0;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
 }
 
 .publication-list li:hover {
-  background-color: #f1f1f1;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 51, 102, 0.06);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
 }
 
 .publication-list h3 {
-  font-size: 1.6em;
-  margin-bottom: 10px;
+  font-size: 1.2em;
+  margin-bottom: 0.5rem;
 }
 
 .publication-list h3 a {
   text-decoration: none;
-  color: #003366;
+  color: var(--color-navy);
+  transition: color var(--transition);
 }
 
 .publication-list h3 a:hover {
-  color: #ff9900;
-  text-decoration: underline;
+  color: var(--color-accent-hover);
 }
 
 .publication-list p {
-  font-size: 1.1em;
-  margin-bottom: 10px;
+  font-size: 1em;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-muted);
 }
 
 .publication-list p strong {
-  font-weight: bold;
-}
-
-#contact {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  margin-top: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#contact h2 {
-  font-size: 2.2em;
-  color: #003366;
-  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 #contact p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
+  font-size: 1.05em;
+  margin-bottom: 1.25rem;
+  color: var(--color-text);
 }
 
 .contact-links {
-  list-style-type: none;
-  padding-left: 0;
+  list-style: none;
+  padding: 0;
 }
 
 .contact-links li {
-  margin-bottom: 15px;
+  margin-bottom: 0.75rem;
 }
 
 .contact-links a {
   text-decoration: none;
-  font-size: 1.3em;
-  color: #003366;
+  font-size: 1.1em;
+  color: var(--color-navy);
   font-weight: 600;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
   display: inline-block;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
 }
 
 .contact-links a:hover {
-  color: white;
-  background-color: #003366;
+  color: var(--color-surface);
+  background: var(--color-navy);
+  transform: translateX(4px);
 }
 
 /* Links */
 a {
-  color: #003366;
+  color: var(--color-navy);
   text-decoration: none;
+  transition: color var(--transition);
 }
 
 a:hover {
-  color: #ff9900;
-  text-decoration: underline;
-}
-
-a {
-  color: #003366;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #ff9900;
-  text-decoration: underline;
+  color: var(--color-accent-hover);
 }
 
 footer {
   text-align: center;
-  padding: 20px;
-  background-color: #003366;
-  color: white;
-  font-size: 0.9em;
-  margin-top: 20px;
+  padding: clamp(20px, 4vw, 28px);
+  background: var(--color-navy);
+  color: var(--color-surface);
+  font-size: 0.95em;
+  margin-top: var(--space-section);
+  transition: opacity var(--transition);
 }
 
 footer p {
-  padding: 0 10px; /* Adds padding around footer text */
-}
-
-#bio {
-  /*text-align: center; */
-  padding: 20px; /* Adds padding around bio content */
-}
-
-#bio img {
-  max-width: 200px;
-  border-radius: 50%;
-  margin-top: 20px;
+  padding: 0 10px;
 }
 
 #contact ul {
   text-align: left;
-  padding-left: 20px;
+  padding-left: 0;
 }
 
 #contact ul li {
-  font-size: 1.1em;
-  margin-bottom: 10px;
+  font-size: 1.05em;
+  margin-bottom: 0.5rem;
 }
 
-button {
-  padding: 10px 20px;
-  background-color: #003366;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1.1em;
-  transition: background-color 0.3s ease;
-  margin: 10px 0; /* Adds margin around buttons */
-}
-
-button:hover {
-  background-color: #ff9900;
-}
-
+/* Header */
 header {
-  background-color: #003366; /* Dark blue background */
-  padding: 20px 40px;
+  background: var(--color-navy);
+  padding: 0.9rem clamp(24px, 5vw, 48px);
   position: sticky;
   top: 0;
   z-index: 10;
-  height: 80px; /* Set header height */
+  min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--transition);
 }
 
-/* Logo/Name Styling */
 header .logo a {
-  color: white;
-  font-size: 2em;
-  font-weight: bold;
+  color: var(--color-surface);
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  font-weight: 700;
   text-decoration: none;
-  transition: color 0.3s ease;
+  letter-spacing: -0.02em;
+  transition: color var(--transition), transform var(--transition);
 }
 
 header .logo a:hover {
-  color: #ff9900; /* Accent color for hover */
+  color: var(--color-accent-hover);
+  transform: translateY(-1px);
 }
 
-/* Navigation Styling */
 nav ul {
   display: flex;
-  list-style-type: none;
-  padding-left: 0;
+  list-style: none;
+  padding: 0;
   margin: 0;
-}
-
-nav ul li {
-  margin-left: 30px; /* Space out the navigation items */
+  gap: clamp(16px, 3vw, 28px);
 }
 
 nav ul li a {
   text-decoration: none;
-  color: white;
-  font-size: 1.1em;
-  font-weight: 600;
-  transition: color 0.3s ease;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  transition: color var(--transition), background var(--transition);
 }
 
 nav ul li a:hover {
-  color: #ff9900; /* Accent color on hover */
+  color: var(--color-accent-hover);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-/* Active link highlight */
 nav ul li a.active {
-  color: #ff9900; /* Active link stays in accent color */
+  color: var(--color-accent-hover);
 }
 
-/* Progress Bar Styling */
+/* Progress bar */
 #progress-bar {
-  height: 5px;
-  background-color: #003366; /* Dark blue background for the progress bar */
+  height: 3px;
+  background: rgba(0, 51, 102, 0.3);
   position: fixed;
   top: 0;
   left: 0;
@@ -314,9 +341,9 @@ nav ul li a.active {
 
 #progress-bar .progress {
   height: 100%;
-  background-color: #ff9900; /* Accent color for the progress */
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
   width: 0%;
-  transition: width 0.1s ease-in-out;
+  transition: width 0.12s ease-out;
 }
 
 /* Media query for smaller screens */
@@ -338,181 +365,131 @@ nav ul li a.active {
   }
 }
 
-/* About Me Section Styling */
+/* About Me Section */
 #about-me {
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  padding: 40px;
-  background-color: #f7f7f7; /* Light background for the About Me section */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 40px;
+  flex-direction: column;
+  margin-top: var(--space-section);
 }
 
 #about-me .top-section {
   display: flex;
-  align-items: center; /* This centers the image vertically with the text */
-  justify-content: flex-start; /* Left align the image and text */
+  align-items: center;
+  justify-content: flex-start;
   width: 100%;
-  margin-bottom: 20px; /* Space below the top section */
+  margin-bottom: 1.5rem;
+  gap: 1.5rem;
 }
 
 #about-me .image-container {
-  width: 150px; /* Fixed width for image container */
-  height: 150px; /* Fixed height for image container */
-  border-radius: 50%; /* Circular container */
-  overflow: hidden; /* Ensure image doesn't overflow */
-  margin-right: 20px; /* Space between image and text */
-  flex-shrink: 0; /* Prevent shrinking */
+  width: 140px;
+  height: 140px;
+  min-width: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 3px solid var(--color-border);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+#about-me .image-container:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-md);
 }
 
 #about-me img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the image covers the container while maintaining aspect ratio */
-  display: block; /* Remove extra space below the image */
+  object-fit: cover;
+  display: block;
 }
 
 #about-me .text-container {
-  flex: 1; /* Allow the text to take up the remaining space */
+  flex: 1;
   display: flex;
-  flex-direction: column; /* Stack header and paragraph vertically */
-  justify-content: center; /* Vertically center the content within the text container */
+  flex-direction: column;
+  justify-content: center;
 }
 
 #about-me .text-container h2 {
-  font-size: 2.4em;
-  color: #003366;
-  margin-bottom: 15px;
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  margin-bottom: 0.75rem;
 }
 
 #about-me .text-container p {
-  font-size: 1.2em;
-  line-height: 1.6;
-  color: #333;
-  margin: 0; /* Remove margin from paragraph */
-  text-align: left; /* Left align paragraph text */
+  font-size: 1.08em;
+  line-height: 1.65;
+  color: var(--color-text);
+  margin: 0;
+  text-align: left;
 }
 
-
-/* Styling for the second part of the About Me section (below image) */
 #about-me .bio {
-  font-size: 1.1em;
-  line-height: 1.6;
-  color: #333;
-  margin-top: 20px;
+  font-size: 1.05em;
+  line-height: 1.65;
+  color: var(--color-text);
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
 }
 
 
-/* General Page Styling for Contact and Resume */
-section {
-  padding: 40px 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  background-color: #f7f7f7; /* Light background for sections */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: left; /* Left align content */
-}
-
-/* Styling the Header for Contact and Resume */
-h2 {
-  font-size: 2.4em;
-  color: #003366; /* Dark blue for header */
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-/* Paragraph Styling for both sections */
+/* Paragraphs (shared) */
 p {
-  font-size: 1.1em;
-  line-height: 1.6;
-  color: #333; /* Dark text for readability */
-  margin-bottom: 20px; /* Add space below paragraphs */
-  text-align: left; /* Left align paragraphs */
+  font-size: 1.05em;
+  line-height: 1.65;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  text-align: left;
 }
 
-/* Styling Links (email, LinkedIn, GitHub) */
-a {
-  color: #003366; /* Dark blue color for links */
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: #ff9900; /* Accent color on hover */
-}
-
-/* Resume Button Styling */
+/* Resume button */
 button.resume-button {
-  background-color: #003366;
-  color: white;
-  padding: 12px 24px;
-  font-size: 1.1em;
+  background: var(--color-navy);
+  color: var(--color-surface);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  display: inline-block; /* Align with text */
-  margin-top: 20px; /* Add space between button and text */
-  transition: background-color 0.3s ease;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: background var(--transition), transform var(--transition), color var(--transition);
 }
 
 button.resume-button:hover {
-  background-color: #ff9900; /* Accent color on hover */
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
 }
 
-/* Responsive Design for smaller screens */
+/* Responsive */
 @media (max-width: 768px) {
   section {
-    padding: 20px;
+    padding: clamp(20px, 4vw, 28px);
   }
 
-  h2 {
-    font-size: 2em; /* Adjust header size for smaller screens */
+  #about-me .top-section {
+    flex-direction: column;
+    text-align: center;
   }
 
-  p {
-    font-size: 1.1em; /* Adjust paragraph size for readability */
+  #about-me .image-container {
+    margin: 0 auto;
   }
 
-  button.resume-button {
-    font-size: 1em;
-    padding: 10px 20px;
+  nav ul {
+    gap: 12px;
   }
 }
-/* Resume Page Styling */
-#resume {
-  background-color: white; /* Light background to match contact page */
-  padding: 40px; /* Same padding for consistency */
-  border-radius: 8px; /* Same rounded corners for consistency */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-  margin-top: 40px; /* Consistent spacing from top */
-}
 
-/* Ensure the header on the resume page matches "Contact Me" in font size */
-#resume h2 {
-  font-size: 2.2em; /* Same font size for headers */
-  font-weight: bold; /* Make it bold if it's not already */
-  color: #003366;
-  margin-bottom: 15px;
-}
-
-/* Ensure the text style matches the contact page */
+/* Resume page (inherits section styles) */
 #resume p {
-  font-size: 1.2em; /* Same font size for text */
-  line-height: 1.6; /* Consistent spacing between lines of text */
-  color: #333;
-  margin-bottom: 20px; /* Adds spacing between paragraphs */
-}
-
-#resume a {
-  color: #003366; /* Keep the links consistent with the header color */
-  text-decoration: none; /* Remove underline for a clean look */
+  font-size: 1.05em;
 }
 
 #resume a:hover {
-  color: #0077cc; /* Highlight link color on hover */
+  color: var(--color-accent-hover);
 }
 
 

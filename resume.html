@@ -15,9 +15,9 @@
   </div>
   <nav>
     <ul>
-      <li><a href="/publications">Publications</a></li>
-      <li><a href="/contact">Contact</a></li>
-      <li><a href="/resume">Resume</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="resume.html">Resume</a></li>
     </ul>
   </nav>
 </header>
@@ -43,17 +43,6 @@
   <footer>
     <p>Contact me at sanapandey at berkeley dot edu</p>
   </footer>
-
-  <script>
-  // Function to update the progress bar as the user scrolls
-  window.onscroll = function() {
-    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    var scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
-    var scrollPercent = (scrollPosition / docHeight) * 100;
-
-    document.querySelector("#progress-bar .progress").style.width = scrollPercent + "%";
-  };
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
