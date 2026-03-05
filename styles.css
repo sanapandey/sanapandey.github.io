@@ -843,6 +843,13 @@ header {
   transition: box-shadow var(--transition);
 }
 
+header .logo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
 header .logo a {
   font-family: var(--font-hero);
   color: var(--color-surface);
@@ -856,6 +863,17 @@ header .logo a {
 header .logo a:hover {
   color: var(--color-accent);
   transform: translateY(-1px);
+}
+
+.pronunciation-badge {
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(217, 104, 70, 0.25);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(217, 104, 70, 0.4);
+  white-space: nowrap;
 }
 
 nav ul {
