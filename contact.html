@@ -4,43 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Sana Pandey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header with navigation links -->
-  <!-- Header with clickable name/logo and navigation -->
-<header>
-  <div class="logo">
-    <a href="index.html">Sana Pandey</a>
+  <header>
+    <div class="logo">
+      <a href="index.html">Sana Pandey</a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="resume.html">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div id="progress-bar">
+    <div class="progress"></div>
   </div>
-  <nav>
-    <ul>
-      <li><a href="publications.html">Publications</a></li>
-      <li><a href="blog/index.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="resume.html">Resume</a></li>
-    </ul>
-  </nav>
-</header>
-
-<!-- Progress Bar -->
-<div id="progress-bar">
-  <div class="progress"></div>
-</div>
-
 
   <section id="contact">
-  <h2>Contact</h2>
-  <p>
-    I'm always happy to chat about my work at Hortus, potential research collaborations, thoughts, questions, or advice! If you are based in the Bay Area, feel free to suggest windows to meet in person at a workspace or coffee/tea shop. You can reach me at:
-  </p>
-  <p>
-    <strong>Email:</strong> <a href="mailto:sanapandey@berkeley.edu">sanapandey at berkeley dot edu</a><br>
-    <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sana-pandey/" target="_blank">https://www.linkedin.com/in/sana-pandey/</a><br>
-    <strong>GitHub:</strong> <a href="https://github.com/sanapandey" target="_blank">https://github.com/sanapandey</a>
-  </p>
-</section>
-
+    <h2>Let's connect!</h2>
+    <p class="contact-intro">I'm always happy to chat about my work, potential research collaborations, thoughts, questions, or advice. If you're based in or around Cambridge, feel free to suggest meeting in person at a workspace or coffee shop :). </p>
+    <ul class="contact-list">
+      <li class="contact-item">
+        <span class="contact-label">Email</span>
+        <a href="mailto:sanapnde@mit.edu">sanapnde at mit dot edu</a>
+      </li>
+      <li class="contact-item">
+        <span class="contact-label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/sana-pandey/" target="_blank" rel="noopener">linkedin.com/in/sana-pandey</a>
+      </li>
+      <li class="contact-item">
+        <span class="contact-label">GitHub</span>
+        <a href="https://github.com/sanapandey" target="_blank" rel="noopener">github.com/sanapandey</a>
+      </li>
+    </ul>
+  </section>
 
   <footer>
     <p>Contact me at sanapandey at berkeley dot edu</p>

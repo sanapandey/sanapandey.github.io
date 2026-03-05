@@ -4,70 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Publications - Sana Pandey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Header with navigation links -->
   <header>
-  <div class="logo">
-    <a href="index.html">Sana Pandey</a>
-  </div>
-  <nav>
-    <ul>
-      <li><a href="publications.html">Publications</a></li>
-      <li><a href="blog/index.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="resume.html">Resume</a></li>
-    </ul>
-  </nav>
-</header>
+    <div class="logo">
+      <a href="index.html">Sana Pandey</a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="publications.html" class="active">Publications</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="resume.html">Resume</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<!-- Progress Bar -->
-<div id="progress-bar">
-  <div class="progress"></div>
-</div>
-  
+  <div id="progress-bar">
+    <div class="progress"></div>
+  </div>
+
   <section id="publications">
     <h2>Published Work</h2>
-    <ul class = "publication-list">
-      <li>
-        <strong>A StrongREJECT for Empty Jailbreaks</strong><br>
-        Authors: Alexandra Souly, Qingyuan Lu, Dillon Bowen, Tu Trinh, Elvis Hsieh, <strong>Sana Pandey</strong>, Pieter Abbeel, Justin Svegliato, Scott Emmons, Olivia Watkins, Sam Toyer.<br>
-        Accepted into NeurIPS, 2024. <br>
-        Abstract: Most jailbreak papers claim the jailbreaks they propose are highly effective, often boasting near-100% attack success rates. However, it is perhaps more common than not for jailbreak developers to substantially exaggerate the effectiveness of their jailbreaks. We suggest this problem arises because jailbreak researchers lack a standard, high-quality benchmark for evaluating jailbreak performance, leaving researchers to create their own. To create a benchmark, researchers must choose a dataset of forbidden prompts to which a victim model will respond, along with an evaluation method that scores the harmfulness of the victim model's responses. We show that existing benchmarks suffer from significant shortcomings and introduce the StrongREJECT benchmark to address these issues. StrongREJECT's dataset contains prompts that victim models must answer with specific, harmful information, while its automated evaluator measures the extent to which a response gives useful information to forbidden prompts. In doing so, the StrongREJECT evaluator achieves state-of-the-art agreement with human judgments of jailbreak effectiveness. Notably, we find that existing evaluation methods significantly overstate jailbreak effectiveness compared to human judgments and the StrongREJECT evaluator. We describe a surprising and novel phenomenon that explains this discrepancy: jailbreaks bypassing a victim model's safety fine-tuning tend to reduce its capabilities. Together, our findings underscore the need for researchers to use a high-quality benchmark, such as StrongREJECT, when developing new jailbreak attacks. <br>
-        <a href="https://arxiv.org/abs/2402.10260">Read the full paper</a>
+    <ul class="publication-list">
+      <li class="pub-item">
+        <h3 class="pub-title">A StrongREJECT for Empty Jailbreaks</h3>
+        <span class="pub-badge">NeurIPS 2024</span>
+        <p class="pub-authors">Alexandra Souly, Qingyuan Lu, Dillon Bowen, Tu Trinh, Elvis Hsieh, <strong>Sana Pandey</strong>, Pieter Abbeel, Justin Svegliato, Scott Emmons, Olivia Watkins, Sam Toyer.</p>
+        <details class="pub-abstract-details">
+          <summary>Show abstract</summary>
+          <p class="pub-abstract">Most jailbreak papers claim the jailbreaks they propose are highly effective, often boasting near-100% attack success rates. However, it is perhaps more common than not for jailbreak developers to substantially exaggerate the effectiveness of their jailbreaks. We suggest this problem arises because jailbreak researchers lack a standard, high-quality benchmark for evaluating jailbreak performance, leaving researchers to create their own. To create a benchmark, researchers must choose a dataset of forbidden prompts to which a victim model will respond, along with an evaluation method that scores the harmfulness of the victim model's responses. We show that existing benchmarks suffer from significant shortcomings and introduce the StrongREJECT benchmark to address these issues. StrongREJECT's dataset contains prompts that victim models must answer with specific, harmful information, while its automated evaluator measures the extent to which a response gives useful information to forbidden prompts. In doing so, the StrongREJECT evaluator achieves state-of-the-art agreement with human judgments of jailbreak effectiveness. Notably, we find that existing evaluation methods significantly overstate jailbreak effectiveness compared to human judgments and the StrongREJECT evaluator. We describe a surprising and novel phenomenon that explains this discrepancy: jailbreaks bypassing a victim model's safety fine-tuning tend to reduce its capabilities. Together, our findings underscore the need for researchers to use a high-quality benchmark, such as StrongREJECT, when developing new jailbreak attacks.</p>
+        </details>
+        <a href="https://arxiv.org/abs/2402.10260" class="pub-link">Read the full paper →</a>
       </li>
-      <li>
-        <strong>What We Know About Non-Engagement Signals in Content Ranking</strong><br>
-        Authors: Tom Cunningham, <strong>Sana Pandey</strong>, Leif Sigerson, Jonathan Stray, Jeff Allen, Bonnie Barrilleaux, Ravi Iyer, Smitha Milli, Mohit Kothari, Behnam Rezaei<br>
-        ArXiv Pre-print, 2024. Currently scheduled for submission in special issue at the New York Academy of Sciences. <br>
-        Abstract: Many online platforms predominantly rank items by predicted user engagement. We believe that there is much unrealized potential in including non-engagement signals, which can improve outcomes both for platforms and for society as a whole. Based on a daylong workshop with experts from industry and academia, we formulate a series of propositions and document each as best we can from public evidence, including quantitative results where possible.
-There is strong evidence that ranking by predicted engagement is effective in increasing user retention. However retention can be further increased by incorporating other signals, including item "quality" proxies and asking users what they want to see with "item-level" surveys. There is also evidence that "diverse engagement" is an effective quality signal. Ranking changes can alter the prevalence of self-reported experiences of various kinds (e.g. harassment) but seldom have large enough effects on attitude measures like user satisfaction, well-being, polarization etc. to be measured in typical experiments. User controls over ranking often have low usage rates, but when used they do correlate well with quality and item-level surveys. There was no strong evidence on the impact of transparency/explainability on retention. There is reason to believe that generative AI could be used to create better quality signals and enable new kinds of user controls. <br>
-        <a href="https://arxiv.org/abs/2402.06831">Read the full paper</a>
+      <li class="pub-item">
+        <h3 class="pub-title">What We Know About Non-Engagement Signals in Content Ranking</h3>
+        <span class="pub-badge">New York Academy of Science Special Annals 2025</span>
+        <p class="pub-authors">Tom Cunningham, <strong>Sana Pandey</strong>, Leif Sigerson, Jonathan Stray, Jeff Allen, Bonnie Barrilleaux, Ravi Iyer, Smitha Milli, Mohit Kothari, Behnam Rezaei.</p>
+        <details class="pub-abstract-details">
+          <summary>Show abstract</summary>
+          <p class="pub-abstract">Many online platforms predominantly rank items by predicted user engagement. We believe that there is much unrealized potential in including non-engagement signals, which can improve outcomes both for platforms and for society as a whole. Based on a daylong workshop with experts from industry and academia, we formulate a series of propositions and document each as best we can from public evidence, including quantitative results where possible. There is strong evidence that ranking by predicted engagement is effective in increasing user retention. However retention can be further increased by incorporating other signals, including item "quality" proxies and asking users what they want to see with "item-level" surveys. There is also evidence that "diverse engagement" is an effective quality signal. Ranking changes can alter the prevalence of self-reported experiences of various kinds (e.g. harassment) but seldom have large enough effects on attitude measures like user satisfaction, well-being, polarization etc. to be measured in typical experiments. User controls over ranking often have low usage rates, but when used they do correlate well with quality and item-level surveys. There was no strong evidence on the impact of transparency/explainability on retention. There is reason to believe that generative AI could be used to create better quality signals and enable new kinds of user controls.</p>
+        </details>
+        <a href="https://arxiv.org/abs/2402.06831" class="pub-link">Read the full paper →</a>
       </li>
-      <!-- Add more publications here -->
     </ul>
 
     <h2>In Progress</h2>
-    <ul class = "publication-list">
-      <li>
-        <strong>Constructive Dialogue or Chaos? Assessing Online Content via Comment Interactions</strong><br>
-        Authors: <strong>Sana Pandey</strong>, Jonathan Stray.<br>
-        Status: In progress. Scheduled for workshop submission. <br>
+    <ul class="publication-list">
+      <li class="pub-item">
+        <h3 class="pub-title">Constructive Dialogue or Chaos? Assessing Online Content via Comment Interactions</h3>
+        <span class="pub-badge pub-badge--muted">In progress</span>
+        <p class="pub-authors"><strong>Sana Pandey</strong>, Jonathan Stray.</p>
+        <p class="pub-note">Scheduled for workshop submission.</p>
       </li>
     </ul>
 
     <h2>Policy Writing and Other Work</h2>
-    <ul class = "publication-list">
-      <li>
-        <strong>2020 Global Go To Think Tank Index Report</strong><br>
-        Written in 2021 during an internship with the Think Tanks and Civil Societies Program, which is housed at The Lauder Institute at the University of Pennyslvania. My work focused on the relationship between think tanks, government policy, and AI development. <br> 
-        <a href="https://repository.upenn.edu/entities/publication/9f1730fa-da55-40bd-a1f4-1c2b2346b753">Read the full report.</a><br>
+    <ul class="publication-list">
+      <li class="pub-item">
+        <h3 class="pub-title">2020 Global Go To Think Tank Index Report</h3>
+        <span class="pub-badge">Lauder Institute / UPenn 2021</span>
+        <p class="pub-authors">Written during an internship with the Think Tanks and Civil Societies Program. My work focused on the relationship between think tanks, government policy, and AI development.</p>
+        <a href="https://repository.upenn.edu/entities/publication/9f1730fa-da55-40bd-a1f4-1c2b2346b753" class="pub-link">Read the full report →</a>
       </li>
-      <li>
-        <strong>Rice Rabbit: Analyzing the Evolution of China’s Feminist Movement with the Rise of Censorship and Social Media</strong><br>
-        Written as a final thesis in 2020 upon acceptance into the <a href = "https://spice.fsi.stanford.edu/fellowship/china-scholars-program"> Stanford China Scholars Program. </a> My research focused on the influence of censorship and technology policy in China on the development of the East Asian feminist movement. <br>
-        <a href="https://spice.fsi.stanford.edu/news/china-scholars-program-accepting-applications-fall-2022#:~:text=Stanford%20University%20China%20Scholars%20Program%20for%20high%20school%20students&text=Sana%20Pandey%2C%20a%20recent%20alum%20of%20the%20program.">Learn more about my experience.</a><br>
+      <li class="pub-item">
+        <h3 class="pub-title">Rice Rabbit: Analyzing the Evolution of China’s Feminist Movement with the Rise of Censorship and Social Media</h3>
+        <span class="pub-badge">Stanford China Scholars Program 2020</span>
+        <p class="pub-authors">Final thesis upon acceptance into the <a href="https://spice.fsi.stanford.edu/fellowship/china-scholars-program">Stanford China Scholars Program</a>. My research focused on the influence of censorship and technology policy in China on the development of the East Asian feminist movement.</p>
+        <a href="https://spice.fsi.stanford.edu/news/china-scholars-program-accepting-applications-fall-2022#:~:text=Stanford%20University%20China%20Scholars%20Program%20for%20high%20school%20students&text=Sana%20Pandey%2C%20a%20recent%20alum%20of%20the%20program." class="pub-link">Learn more about my experience →</a>
       </li>
     </ul>
   </section>
