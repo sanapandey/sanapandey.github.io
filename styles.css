@@ -344,9 +344,11 @@ section:nth-of-type(5) { animation-delay: 0.33s; }
 }
 
 #research-panel {
-  min-height: 100px;
+  height: 12rem;
+  min-height: 12rem;
   margin-top: 1.5rem;
   padding: 1.25rem 1.5rem;
+  overflow-y: auto;
   background: var(--color-primary-soft);
   border-radius: var(--radius);
   border-left: 4px solid var(--color-accent);
