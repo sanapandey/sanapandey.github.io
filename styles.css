@@ -344,8 +344,8 @@ section:nth-of-type(5) { animation-delay: 0.33s; }
 }
 
 #research-panel {
-  height: 12rem;
-  min-height: 12rem;
+  height: 17rem;
+  min-height: 17rem;
   margin-top: 1.5rem;
   padding: 1.25rem 1.5rem;
   overflow-y: auto;
