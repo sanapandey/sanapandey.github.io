@@ -77,41 +77,45 @@
         <p>Click a dot to read a short description of my work in that area.</p>
 
         <svg class="research-network-viz" viewBox="-55 -18 510 318" xmlns="http://www.w3.org/2000/svg" aria-label="Research themes network">
-          <!-- Edges: Safe AI (center) connects to all others -->
-          <line x1="200" y1="155" x2="95"  y2="65"  stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="200" y1="155" x2="305" y2="65"  stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="200" y1="155" x2="70"  y2="155" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="200" y1="155" x2="95"  y2="245" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="200" y1="155" x2="305" y2="245" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="200" y1="155" x2="200" y2="255" stroke="var(--color-border)" stroke-width="1.5"/>
-          <!-- Nodes: Safe AI central, others around it -->
+          <!-- Edges: same connected graph, Safe AI at center -->
+          <line x1="200" y1="155" x2="105" y2="110" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="200" y1="155" x2="295" y2="110" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="200" y1="155" x2="200" y2="45"  stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="105" y1="110" x2="200" y2="45"  stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="105" y1="110" x2="65"  y2="185" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="295" y1="110" x2="200" y2="45"  stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="295" y1="110" x2="335" y2="185" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="200" y1="45"  x2="200" y2="250" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="65"  y1="185" x2="200" y2="250" stroke="var(--color-border)" stroke-width="1.5"/>
+          <line x1="335" y1="185" x2="200" y2="250" stroke="var(--color-border)" stroke-width="1.5"/>
+          <!-- Nodes: Safe AI at center; Policy at top; others unchanged -->
           <g class="node" data-theme="safe-ai" role="button" tabindex="0">
             <circle cx="200" cy="155" r="6"/>
-            <text x="200" y="142" text-anchor="middle">Safe AI</text>
+            <text x="200" y="178" text-anchor="middle">Safe AI</text>
           </g>
           <g class="node" data-theme="recommendations" role="button" tabindex="0">
-            <circle cx="95" cy="65" r="6"/>
-            <text x="70" y="69" text-anchor="end">Recommendations</text>
+            <circle cx="105" cy="110" r="6"/>
+            <text x="88" y="114" text-anchor="end">Recommendations</text>
           </g>
           <g class="node" data-theme="interpretability" role="button" tabindex="0">
-            <circle cx="305" cy="65" r="6"/>
-            <text x="330" y="69" text-anchor="start">Interpretability</text>
+            <circle cx="295" cy="110" r="6"/>
+            <text x="312" y="114" text-anchor="start">Interpretability</text>
           </g>
           <g class="node" data-theme="policy-govai" role="button" tabindex="0">
-            <circle cx="70" cy="155" r="6"/>
-            <text x="45" y="159" text-anchor="end">AI Policy</text>
+            <circle cx="200" cy="45" r="6"/>
+            <text x="200" y="32" text-anchor="middle">AI Policy</text>
           </g>
           <g class="node" data-theme="llm-benchmarking" role="button" tabindex="0">
-            <circle cx="95" cy="245" r="6"/>
-            <text x="70" y="249" text-anchor="end">LLM Benchmarks</text>
+            <circle cx="65" cy="185" r="6"/>
+            <text x="48" y="189" text-anchor="end">LLM Benchmarks</text>
           </g>
           <g class="node" data-theme="clinical-ai" role="button" tabindex="0">
-            <circle cx="305" cy="245" r="6"/>
-            <text x="330" y="249" text-anchor="start">Clinical AI</text>
+            <circle cx="335" cy="185" r="6"/>
+            <text x="352" y="189" text-anchor="start">Clinical AI</text>
           </g>
           <g class="node" data-theme="nlp" role="button" tabindex="0">
-            <circle cx="200" cy="255" r="6"/>
-            <text x="200" y="278" text-anchor="middle">NLP</text>
+            <circle cx="200" cy="250" r="6"/>
+            <text x="200" y="268" text-anchor="middle">NLP</text>
           </g>
           <!-- Accent ball (moves along network; position set by JS) -->
           <g id="accent-ball-wrap" class="accent-ball-wrap">
