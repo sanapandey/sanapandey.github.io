@@ -283,6 +283,7 @@ section:nth-of-type(5) { animation-delay: 0.33s; }
   display: block;
   width: 100%;
   max-width: 100%;
+  min-height: min(420px, 55vh);
   height: auto;
   margin: 0 0 1.5rem;
   cursor: default;
@@ -317,7 +318,7 @@ section:nth-of-type(5) { animation-delay: 0.33s; }
 
 /* Labels outside dots */
 #research-directions .research-network-viz .node text {
-  font-size: 10px;
+  font-size: 13px;
   font-family: inherit;
   fill: var(--color-text-muted);
   pointer-events: none;
