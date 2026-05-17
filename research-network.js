@@ -8,7 +8,9 @@
 
   var nodes = document.querySelectorAll('#research-directions .node');
   var descriptions = document.querySelectorAll('#research-panel .research-description');
-  var themes = Array.prototype.map.call(nodes, function (n) { return n.getAttribute('data-theme'); });
+  var edgeElements = document.querySelectorAll('#research-directions .edge');
+  var THEME_ORDER = ['safe-ai', 'recommendations', 'interpretability', 'policy-govai', 'llm-benchmarking', 'clinical-ai', 'nlp'];
+  var themes = THEME_ORDER.slice();
 
   var cycleInterval = null;
   var cyclingPaused = false;
@@ -20,8 +22,8 @@
 
   var nodePositions = themes.map(function (theme) {
     var g = document.querySelector('#research-directions .node[data-theme="' + theme + '"]');
-    var circle = g ? g.querySelector('circle') : null;
-    if (!circle) return { cx: 200, cy: 45 };
+    var circle = g ? g.querySelector('.node-dot') || g.querySelector('circle') : null;
+    if (!circle) return { cx: 200, cy: 150 };
     return {
       cx: parseFloat(circle.getAttribute('cx'), 10),
       cy: parseFloat(circle.getAttribute('cy'), 10)
@@ -32,12 +34,12 @@
   var ballPos = { x: nodePositions[0].cx, y: nodePositions[0].cy };
   var ballAnimationId = null;
 
+  // Wheel graph: 6 spokes + 6 ring edges. Indices match THEME_ORDER above.
+  // 0 safe-ai (center), 1 recommendations, 2 interpretability, 3 policy-govai,
+  // 4 llm-benchmarking, 5 clinical-ai, 6 nlp
   var edges = [
-    [0, 1], [0, 2], [0, 3], [0, 4], [0, 5],
-    [1, 3], [1, 4],
-    [2, 3], [2, 5],
-    [3, 6],
-    [4, 6], [5, 6]
+    [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6],
+    [3, 2], [2, 5], [5, 6], [6, 4], [4, 1], [1, 3]
   ];
 
   function buildAdjacency() {
@@ -137,6 +139,16 @@
     });
   }
 
+  function setActiveEdges(activeIndex) {
+    var idx = String(activeIndex);
+    edgeElements.forEach(function (edge) {
+      var a = edge.getAttribute('data-a');
+      var b = edge.getAttribute('data-b');
+      var incident = (a === idx || b === idx);
+      edge.classList.toggle('active', incident);
+    });
+  }
+
   function showDescription(theme, moveBallToIndex) {
     hint.style.display = theme ? 'none' : 'block';
     panel.classList.toggle('visible', !!theme);
@@ -150,6 +162,7 @@
     });
 
     if (theme && moveBallToIndex !== undefined) {
+      setActiveEdges(moveBallToIndex);
       moveBallTo(moveBallToIndex);
     }
   }

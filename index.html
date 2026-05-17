@@ -76,49 +76,79 @@
         <h2>Research Directions</h2>
         <p>Click a dot to read a short description of my work in that area.</p>
 
-        <svg class="research-network-viz" viewBox="-95 -18 550 318" xmlns="http://www.w3.org/2000/svg" aria-label="Research themes network">
-          <!-- Edges: same connected graph, Safe AI at center -->
-          <line x1="200" y1="155" x2="105" y2="110" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="200" y1="155" x2="295" y2="110" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="200" y1="155" x2="200" y2="45"  stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="105" y1="110" x2="200" y2="45"  stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="105" y1="110" x2="65"  y2="185" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="295" y1="110" x2="200" y2="45"  stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="295" y1="110" x2="335" y2="185" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="200" y1="45"  x2="200" y2="250" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="65"  y1="185" x2="200" y2="250" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="335" y1="185" x2="200" y2="250" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="200" y1="155" x2="65"  y2="185" stroke="var(--color-border)" stroke-width="1.5"/>
-          <line x1="200" y1="155" x2="335" y2="185" stroke="var(--color-border)" stroke-width="1.5"/>
-          <!-- Nodes: Safe AI at center; Policy at top; others unchanged -->
-          <g class="node" data-theme="safe-ai" role="button" tabindex="0">
-            <circle cx="200" cy="155" r="6"/>
-            <text x="200" y="178" text-anchor="middle">Safe AI</text>
+        <svg class="research-network-viz" viewBox="-30 18 460 268" xmlns="http://www.w3.org/2000/svg" aria-label="Research themes network">
+          <defs>
+            <radialGradient id="ring-bg" cx="50%" cy="50%" r="55%">
+              <stop offset="0%" stop-color="rgba(89, 98, 53, 0.05)"/>
+              <stop offset="70%" stop-color="rgba(89, 98, 53, 0.025)"/>
+              <stop offset="100%" stop-color="rgba(89, 98, 53, 0)"/>
+            </radialGradient>
+            <filter id="node-glow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Soft background grounding the hexagon -->
+          <circle cx="200" cy="150" r="120" fill="url(#ring-bg)"/>
+          <circle class="ring-guide" cx="200" cy="150" r="105" fill="none" stroke="var(--color-border)" stroke-width="0.6" stroke-dasharray="2 4"/>
+
+          <!-- Edges: wheel graph (6 spokes from center + 6 ring edges) -->
+          <!-- Spokes -->
+          <line class="edge" data-a="0" data-b="3" x1="200" y1="150" x2="200" y2="45"/>
+          <line class="edge" data-a="0" data-b="2" x1="200" y1="150" x2="291" y2="98"/>
+          <line class="edge" data-a="0" data-b="5" x1="200" y1="150" x2="291" y2="202"/>
+          <line class="edge" data-a="0" data-b="6" x1="200" y1="150" x2="200" y2="255"/>
+          <line class="edge" data-a="0" data-b="4" x1="200" y1="150" x2="109" y2="202"/>
+          <line class="edge" data-a="0" data-b="1" x1="200" y1="150" x2="109" y2="98"/>
+          <!-- Ring (clockwise from AI Policy) -->
+          <line class="edge" data-a="3" data-b="2" x1="200" y1="45"  x2="291" y2="98"/>
+          <line class="edge" data-a="2" data-b="5" x1="291" y1="98"  x2="291" y2="202"/>
+          <line class="edge" data-a="5" data-b="6" x1="291" y1="202" x2="200" y2="255"/>
+          <line class="edge" data-a="6" data-b="4" x1="200" y1="255" x2="109" y2="202"/>
+          <line class="edge" data-a="4" data-b="1" x1="109" y1="202" x2="109" y2="98"/>
+          <line class="edge" data-a="1" data-b="3" x1="109" y1="98"  x2="200" y2="45"/>
+
+          <!-- Nodes: Safe AI at center; six themes around -->
+          <g class="node node--center" data-theme="safe-ai" role="button" tabindex="0" aria-label="Safe AI">
+            <circle class="node-halo" cx="200" cy="150" r="14"/>
+            <circle class="node-dot"  cx="200" cy="150" r="8"/>
+            <text x="200" y="174" text-anchor="middle">Safe AI</text>
           </g>
-          <g class="node" data-theme="recommendations" role="button" tabindex="0">
-            <circle cx="105" cy="110" r="6"/>
-            <text x="88" y="114" text-anchor="end">Recommendations</text>
-          </g>
-          <g class="node" data-theme="interpretability" role="button" tabindex="0">
-            <circle cx="295" cy="110" r="6"/>
-            <text x="312" y="114" text-anchor="start">Interpretability</text>
-          </g>
-          <g class="node" data-theme="policy-govai" role="button" tabindex="0">
-            <circle cx="200" cy="45" r="6"/>
+          <g class="node" data-theme="policy-govai" role="button" tabindex="0" aria-label="AI Policy">
+            <circle class="node-halo" cx="200" cy="45" r="12"/>
+            <circle class="node-dot"  cx="200" cy="45" r="6"/>
             <text x="200" y="32" text-anchor="middle">AI Policy</text>
           </g>
-          <g class="node" data-theme="llm-benchmarking" role="button" tabindex="0">
-            <circle cx="65" cy="185" r="6"/>
-            <text x="48" y="189" text-anchor="end">LLM Benchmarks</text>
+          <g class="node" data-theme="interpretability" role="button" tabindex="0" aria-label="Interpretability">
+            <circle class="node-halo" cx="291" cy="98" r="12"/>
+            <circle class="node-dot"  cx="291" cy="98" r="6"/>
+            <text x="304" y="98" dy="0.35em" text-anchor="start">Interpretability</text>
           </g>
-          <g class="node" data-theme="clinical-ai" role="button" tabindex="0">
-            <circle cx="335" cy="185" r="6"/>
-            <text x="352" y="189" text-anchor="start">Clinical AI</text>
+          <g class="node" data-theme="clinical-ai" role="button" tabindex="0" aria-label="Clinical AI">
+            <circle class="node-halo" cx="291" cy="202" r="12"/>
+            <circle class="node-dot"  cx="291" cy="202" r="6"/>
+            <text x="304" y="202" dy="0.35em" text-anchor="start">Clinical AI</text>
           </g>
-          <g class="node" data-theme="nlp" role="button" tabindex="0">
-            <circle cx="200" cy="250" r="6"/>
-            <text x="200" y="268" text-anchor="middle">NLP</text>
+          <g class="node" data-theme="nlp" role="button" tabindex="0" aria-label="Natural Language Processing">
+            <circle class="node-halo" cx="200" cy="255" r="12"/>
+            <circle class="node-dot"  cx="200" cy="255" r="6"/>
+            <text x="200" y="273" text-anchor="middle">NLP</text>
           </g>
+          <g class="node" data-theme="llm-benchmarking" role="button" tabindex="0" aria-label="LLM Benchmarks">
+            <circle class="node-halo" cx="109" cy="202" r="12"/>
+            <circle class="node-dot"  cx="109" cy="202" r="6"/>
+            <text x="96" y="202" dy="0.35em" text-anchor="end">LLM Benchmarks</text>
+          </g>
+          <g class="node" data-theme="recommendations" role="button" tabindex="0" aria-label="Recommendation Systems">
+            <circle class="node-halo" cx="109" cy="98" r="12"/>
+            <circle class="node-dot"  cx="109" cy="98" r="6"/>
+            <text x="96" y="98" dy="0.35em" text-anchor="end">Recommendations</text>
+          </g>
+
           <!-- Accent ball (moves along network; position set by JS) -->
           <g id="accent-ball-wrap" class="accent-ball-wrap">
             <circle class="accent-ball" r="10" cx="0" cy="0"/>
@@ -145,27 +175,56 @@
 
   <section id="updates">
     <h2>Recent Updates</h2>
-    <p>Some representative updates of what I've been up to recently:</p>
-    <ul class="update-list">
-      <li><strong>February 2026:</strong> I was accepted into Harvard's AI Safety Policy Fellowship, run by Harvard AISST.</li>
-      <li><strong>January 2026:</strong> I started collaborating with Andrea de Varda and Ev Federenko on predicting generalization failures through mechanistic interpretability.</li>
-      <li><strong>November 2025:</strong> I co-organized a Long-term Con, a follow-up to my 2023 workshop Non-Engagement Con, as a workshop at the <a href="https://ide.mit.edu/events/2025-conference-on-digital-experimentation-mit-codemit/">MIT Conference on Digital Experimentation</a>. The workshop brought together industry and platform experts to discuss methods that measure causal effects in long-term experiments.</li>
-      <li><strong>September 2025:</strong> I joined <a href="https://www.csail.mit.edu/">MIT CSAIL</a> and started work with Jacob Andreas and Antonio Torralba on scalable interpretability methods.</li>
-      <li><strong>June 2025:</strong> I was awarded the National Science Foundation Graduate Research Fellowship! The program funds graduate studies and stipends for three years, and will go towards my work at MIT.</li>
-      <li><strong>April 2025:</strong> I accepted an offer from MIT for a fully-funded graduate program! I'll be pursuing a dual degree in EECS and technology policy, with a focus on safe AI evaluations and development.</li>
-      <li><strong>February 2025:</strong> I was invited to the inaugural International Association for Safe and Ethical AI (IASEAI) Conference, hosted at the OECD headquarters in Paris! <a href="https://www.linkedin.com/posts/iaseai_iaseai25-ethicalai-airegulation-activity-7293362602053693440-bd2R?utm_source=share&utm_medium=member_desktop&rcm=ACoAADVAwZYBpiSqT0SvY6Hy_56FeTDEm2DZwOg">Recap of day 1</a>.</li>
-      <li><strong>December 2024:</strong> I co-sponsored the inaugural <a href="https://www.sanjoseca.gov/your-government/departments-offices/information-technology/ai-reviews-algorithm-register/govai-coalition">GovAI Summit</a> through my work at Hortus in San Jose, California.</li>
-      <li><strong>September 2024:</strong> A StrongREJECT for Empty Jailbreaks was accepted into NeurIPs. See <a href="publications.html">publications</a>.</li>
-      <li><strong>August 2024:</strong> I was invited as a guest speaker at UC Berkeley's course AI and the Future of Business.</li>
-      <li><strong>July 2024:</strong> I helped set up the CHAI Pro-social Ranking Challenge, with testing infrastructure, example code, and recruitment.</li>
-      <li><strong>May 2024:</strong> I graduated from UC Berkeley! <a href="https://cdss.berkeley.edu/news/sana-pandey-uses-ai-shape-brighter-future-society">Feature profile</a> by the Department of Data Science, Statistics, and Society.</li>
-      <li><strong>April 2024:</strong> I traveled to Virginia for USA Collegiate Fencing Nationals and <a href="https://www.fencingtimelive.com/events/results/40B97E1C5D1D41B492F3B7652F5D8F8C">ranked in the top 10</a> for Women's Epee.</li>
-      <li><strong>March 2024:</strong> StrongREJECT for Empty Jailbreaks accepted at the <a href="https://iclr-r2fm.github.io/">ICLR Workshop on Reliable and Responsible Foundation Models</a>.</li>
-      <li><strong>February 2024:</strong> I co-authored a whitepaper on feedback signals beyond engagement in recommendation systems. See <a href="publications.html">publications</a>.</li>
-      <li><strong>November 2023:</strong> I co-organized Non-Engagement Con, an industry-academia workshop on platform experiments and recommendation output.</li>
-      <li><strong>September 2023:</strong> I developed sequence-to-sequence prediction models for a joint collaboration between UCSF Center for Computational and Precision Health and Berkeley AI Research.</li>
-      <li><strong>August 2023:</strong> I returned from eight months studying abroad in Italy, earning a beginner's certification in Italian and taking Master's courses in AI, Technology and Society, and Advanced Social Neuroscience.</li>
-    </ul>
+    <p>A running log of what I've been up to.</p>
+
+    <div class="timeline">
+      <div class="timeline-year">
+        <h3 class="timeline-year-label">2026</h3>
+        <ul class="timeline-list">
+          <li class="timeline-item"><span class="timeline-date">February</span><p>I was accepted into Harvard's AI Safety Policy Fellowship, run by Harvard AISST.</p></li>
+          <li class="timeline-item"><span class="timeline-date">January</span><p>I started collaborating with Andrea de Varda and Ev Federenko on predicting generalization failures through mechanistic interpretability.</p></li>
+        </ul>
+      </div>
+
+      <div class="timeline-year">
+        <h3 class="timeline-year-label">2025</h3>
+        <ul class="timeline-list">
+          <li class="timeline-item"><span class="timeline-date">November</span><p>I co-organized a Long-term Con, a follow-up to my 2023 workshop Non-Engagement Con, as a workshop at the <a href="https://ide.mit.edu/events/2025-conference-on-digital-experimentation-mit-codemit/">MIT Conference on Digital Experimentation</a>. The workshop brought together industry and platform experts to discuss methods that measure causal effects in long-term experiments.</p></li>
+          <li class="timeline-item"><span class="timeline-date">September</span><p>I joined <a href="https://www.csail.mit.edu/">MIT CSAIL</a> and started work with Jacob Andreas and Antonio Torralba on scalable interpretability methods.</p></li>
+          <li class="timeline-item"><span class="timeline-date">June</span><p>I was awarded the National Science Foundation Graduate Research Fellowship! The program funds graduate studies and stipends for three years, and will go towards my work at MIT.</p></li>
+          <li class="timeline-item"><span class="timeline-date">April</span><p>I accepted an offer from MIT for a fully-funded graduate program! I'll be pursuing a dual degree in EECS and technology policy, with a focus on safe AI evaluations and development.</p></li>
+          <li class="timeline-item"><span class="timeline-date">February</span><p>I was invited to the inaugural International Association for Safe and Ethical AI (IASEAI) Conference, hosted at the OECD headquarters in Paris! <a href="https://www.linkedin.com/posts/iaseai_iaseai25-ethicalai-airegulation-activity-7293362602053693440-bd2R?utm_source=share&utm_medium=member_desktop&rcm=ACoAADVAwZYBpiSqT0SvY6Hy_56FeTDEm2DZwOg">Recap of day 1</a>.</p></li>
+        </ul>
+      </div>
+
+      <div class="timeline-year is-collapsed" data-collapsed-year>
+        <h3 class="timeline-year-label">2024</h3>
+        <ul class="timeline-list">
+          <li class="timeline-item"><span class="timeline-date">December</span><p>I co-sponsored the inaugural <a href="https://www.sanjoseca.gov/your-government/departments-offices/information-technology/ai-reviews-algorithm-register/govai-coalition">GovAI Summit</a> through my work at Hortus in San Jose, California.</p></li>
+          <li class="timeline-item"><span class="timeline-date">September</span><p>A StrongREJECT for Empty Jailbreaks was accepted into NeurIPs. See <a href="publications.html">publications</a>.</p></li>
+          <li class="timeline-item"><span class="timeline-date">August</span><p>I was invited as a guest speaker at UC Berkeley's course AI and the Future of Business.</p></li>
+          <li class="timeline-item"><span class="timeline-date">July</span><p>I helped set up the CHAI Pro-social Ranking Challenge, with testing infrastructure, example code, and recruitment.</p></li>
+          <li class="timeline-item"><span class="timeline-date">May</span><p>I graduated from UC Berkeley! <a href="https://cdss.berkeley.edu/news/sana-pandey-uses-ai-shape-brighter-future-society">Feature profile</a> by the Department of Data Science, Statistics, and Society.</p></li>
+          <li class="timeline-item"><span class="timeline-date">April</span><p>I traveled to Virginia for USA Collegiate Fencing Nationals and <a href="https://www.fencingtimelive.com/events/results/40B97E1C5D1D41B492F3B7652F5D8F8C">ranked in the top 10</a> for Women's Epee.</p></li>
+          <li class="timeline-item"><span class="timeline-date">March</span><p>StrongREJECT for Empty Jailbreaks accepted at the <a href="https://iclr-r2fm.github.io/">ICLR Workshop on Reliable and Responsible Foundation Models</a>.</p></li>
+          <li class="timeline-item"><span class="timeline-date">February</span><p>I co-authored a whitepaper on feedback signals beyond engagement in recommendation systems. See <a href="publications.html">publications</a>.</p></li>
+        </ul>
+      </div>
+
+      <div class="timeline-year is-collapsed" data-collapsed-year>
+        <h3 class="timeline-year-label">2023</h3>
+        <ul class="timeline-list">
+          <li class="timeline-item"><span class="timeline-date">November</span><p>I co-organized Non-Engagement Con, an industry-academia workshop on platform experiments and recommendation output.</p></li>
+          <li class="timeline-item"><span class="timeline-date">September</span><p>I developed sequence-to-sequence prediction models for a joint collaboration between UCSF Center for Computational and Precision Health and Berkeley AI Research.</p></li>
+          <li class="timeline-item"><span class="timeline-date">August</span><p>I returned from eight months studying abroad in Italy, earning a beginner's certification in Italian and taking Master's courses in AI, Technology and Society, and Advanced Social Neuroscience.</p></li>
+        </ul>
+      </div>
+    </div>
+
+    <button type="button" class="timeline-toggle" id="timeline-toggle" aria-expanded="false">
+      <span class="timeline-toggle-label">Show older updates</span>
+      <span class="timeline-toggle-icon" aria-hidden="true">+</span>
+    </button>
   </section>
 
   <footer>
