@@ -34,10 +34,15 @@
     <div class="hero-col">
       <div class="hero">
         <div class="hero-name-row">
-          <h1>Sana Pandey</h1>
+          <h1>Sana <em>Pandey</em></h1>
           <span class="hero-meta">sun-AH pahn-day  ·  Cambridge, MA  ·  she/her</span>
         </div>
         <p class="tagline">I'm interested in building safer, more robust AI systems as an end-to-end process. My work spans interpretability, multi-objective optimization, model evaluation, benchmarking, and AI policy.</p>
+        <p class="hero-status">
+          <span class="hero-status-dot" aria-hidden="true"></span>
+          <span class="hero-status-label">Currently</span>
+          building scalable interpretability methods at <a href="https://www.csail.mit.edu/">MIT CSAIL</a>.
+        </p>
       </div>
       <div class="research-description-panel" id="research-panel" aria-live="polite">
         <p class="hint" id="research-hint">Click a node to read a short description of my work in that area.</p>
@@ -73,8 +78,12 @@
     </div>
     <div class="research-col">
       <section id="research-directions">
-        <h2>Research Directions</h2>
-        <p>Click a dot to read a short description of my work in that area.</p>
+        <p class="section-eyebrow">
+          <span class="section-num">01</span>
+          <span class="section-label">Research Network</span>
+        </p>
+        <h2>Research <em>Directions</em></h2>
+        <p class="section-lede">Click a dot to read a short description of my work in that area.</p>
 
         <svg class="research-network-viz" viewBox="-30 18 460 268" xmlns="http://www.w3.org/2000/svg" aria-label="Research themes network">
           <defs>
@@ -158,27 +167,46 @@
     </div>
   </div>
 
-  <section id="about-me">
-    <h2>About Me</h2>
+  <aside class="pullquote" aria-hidden="true">
+    <p>A model is only as good as <em>its impact.</em></p>
+  </aside>
+
+  <section id="about-me" data-section-num="02">
+    <p class="section-eyebrow">
+      <span class="section-num">02</span>
+      <span class="section-label">About</span>
+    </p>
+    <h2>About <em>Me</em></h2>
     <div class="top-section">
       <div class="image-container">
         <img src="bio-photo.jpg" alt="Sana Pandey">
       </div>
       <div class="text-container">
-        <p>Hi, I'm Sana! I'm currently a first-year graduate student at <a href="https://www.csail.mit.edu/">MIT CSAIL</a> in EECS and Technology Policy, and a <a href="https://cdss.berkeley.edu/news/sana-pandey-uses-ai-shape-brighter-future-society">recent graduate of UC Berkeley</a> with degrees in computer science and cognitive science. I also minored in Mandarin, and co-captained the UC Berkeley Fencing team. I am affiliated with the <a href="https://lingo.csail.mit.edu/">Language and Intelligence Group</a>, <a href="https://bair.berkeley.edu/">Berkeley AI Research (BAIR)</a> and the <a href="https://humancompatible.ai/">Center for Human Compatible AI (CHAI)</a>. I am supported by the NSF Graduate Research Fellowship.</p>
+        <p>Hi, I'm Sana! I'm currently a first-year graduate student at <a href="https://www.csail.mit.edu/">MIT CSAIL</a> in EECS and Technology Policy, and a <a href="https://cdss.berkeley.edu/news/sana-pandey-uses-ai-shape-brighter-future-society">recent graduate of UC Berkeley</a> with degrees in computer science and cognitive science. I also minored in Mandarin, and co-captained the UC Berkeley Fencing team. I am supported by the NSF Graduate Research Fellowship.</p>
       </div>
     </div>
     <div class="bio">
       <p>Right now, my focus is on building interpretability methods that work at scale and predicting generalization failures through interpretability techniques, but I'm broadly interested in leveraging human data to build safer, more robust AI systems. I've worked previously on value-alignment in recommendation systems, LLM benchmarking, clinical AI, natural language processing, and technology policy. Feel free to read more on my <a href="resume.html">resume</a> :)</p>
     </div>
+    <div class="affiliation-chips" aria-label="Affiliations">
+      <span class="chips-label">Affiliated with</span>
+      <a class="chip" href="https://lingo.csail.mit.edu/">Language &amp; Intelligence Group</a>
+      <a class="chip" href="https://bair.berkeley.edu/">BAIR</a>
+      <a class="chip" href="https://humancompatible.ai/">CHAI</a>
+      <span class="chip chip--quiet">NSF GRFP</span>
+    </div>
   </section>
 
-  <section id="updates">
-    <h2>Recent Updates</h2>
-    <p>A running log of what I've been up to.</p>
+  <section id="updates" data-section-num="03">
+    <p class="section-eyebrow">
+      <span class="section-num">03</span>
+      <span class="section-label">Updates</span>
+    </p>
+    <h2>Recent <em>Updates</em></h2>
+    <p class="section-lede">A running log of what I've been up to.</p>
 
     <div class="timeline">
-      <div class="timeline-year">
+      <div class="timeline-year timeline-year--current">
         <h3 class="timeline-year-label">2026</h3>
         <ul class="timeline-list">
           <li class="timeline-item"><span class="timeline-date">February</span><p>I was accepted into Harvard's AI Safety Policy Fellowship, run by Harvard AISST.</p></li>
