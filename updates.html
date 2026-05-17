@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Updates - Your Name</title>
+  <title>Updates - Sana Pandey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
-  <!-- Header with navigation links -->
   <header>
     <div class="logo">
       <a href="index.html">Sana Pandey</a>
@@ -16,26 +18,53 @@
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="updates.html">Updates</a></li>
         <li><a href="publications.html">Publications</a></li>
+        <li><a href="blog/index.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="resume.html">Resume</a></li>
       </ul>
     </nav>
   </header>
 
+  <div id="progress-bar">
+    <div class="progress"></div>
+  </div>
+
   <section id="updates">
-    <h2>What I've Been Up To</h2>
-    <ul>
-      <li><strong>Oct 2024:</strong> Published a paper on [Topic] in [Journal]. <a href="link-to-paper">Read more</a>.</li>
-      <li><strong>Sep 2024:</strong> Featured in [News Source]. <a href="link-to-article">Read article</a>.</li>
-      <!-- Add more updates here -->
-    </ul>
+    <header class="section-head">
+      <p class="section-eyebrow">
+        <span class="section-num">01</span>
+        <span class="section-label">Lately</span>
+      </p>
+      <h2>What I've <em>been up to</em></h2>
+    </header>
+
+    <div class="timeline">
+      <div class="timeline-year timeline-year--current">
+        <div class="timeline-year-label">2026</div>
+        <ul class="timeline-list">
+          <li class="timeline-item">
+            <span class="timeline-date">Jan</span>
+            <span class="timeline-body">Started a first-year graduate program at MIT CSAIL.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="timeline-year">
+        <div class="timeline-year-label">2024</div>
+        <ul class="timeline-list">
+          <li class="timeline-item">
+            <span class="timeline-date">Dec</span>
+            <span class="timeline-body">A StrongREJECT for Empty Jailbreaks accepted at NeurIPS 2024.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>Contact me at <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    <p>Contact me at sanapnde at mit dot edu</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>

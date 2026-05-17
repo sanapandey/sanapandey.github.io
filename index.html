@@ -78,12 +78,13 @@
     </div>
     <div class="research-col">
       <section id="research-directions">
-        <p class="section-eyebrow">
-          <span class="section-num">01</span>
-          <span class="section-label">Research Network</span>
-        </p>
-        <h2>Research <em>Directions</em></h2>
-        <p class="section-lede">Click a dot to read a short description of my work in that area.</p>
+        <header class="section-head">
+          <p class="section-eyebrow">
+            <span class="section-num">01</span>
+            <span class="section-label">The map</span>
+          </p>
+          <h2>Research <em>Directions</em></h2>
+        </header>
 
         <svg class="research-network-viz" viewBox="-30 18 460 268" xmlns="http://www.w3.org/2000/svg" aria-label="Research themes network">
           <defs>
@@ -103,7 +104,11 @@
 
           <!-- Soft background grounding the hexagon -->
           <circle cx="200" cy="150" r="120" fill="url(#ring-bg)"/>
+          <circle class="ring-guide ring-guide--outer" cx="200" cy="150" r="118" fill="none" stroke="var(--color-border)" stroke-width="0.5" stroke-dasharray="1 6"/>
           <circle class="ring-guide" cx="200" cy="150" r="105" fill="none" stroke="var(--color-border)" stroke-width="0.6" stroke-dasharray="2 4"/>
+          <!-- Always-on subtle glow behind the center node -->
+          <circle class="center-glow center-glow--lg" cx="200" cy="150" r="26"/>
+          <circle class="center-glow center-glow--md" cx="200" cy="150" r="18"/>
 
           <!-- Edges: wheel graph (6 spokes from center + 6 ring edges) -->
           <!-- Spokes -->
@@ -121,38 +126,46 @@
           <line class="edge" data-a="4" data-b="1" x1="109" y1="202" x2="109" y2="98"/>
           <line class="edge" data-a="1" data-b="3" x1="109" y1="98"  x2="200" y2="45"/>
 
-          <!-- Nodes: Safe AI at center; six themes around -->
+          <!-- Nodes: Safe AI at center; six themes around. Each node has two
+               halos so the active state can ripple outward in layers. -->
           <g class="node node--center" data-theme="safe-ai" role="button" tabindex="0" aria-label="Safe AI">
+            <circle class="node-halo-outer" cx="200" cy="150" r="22"/>
             <circle class="node-halo" cx="200" cy="150" r="14"/>
             <circle class="node-dot"  cx="200" cy="150" r="8"/>
             <text x="200" y="174" text-anchor="middle">Safe AI</text>
           </g>
           <g class="node" data-theme="policy-govai" role="button" tabindex="0" aria-label="AI Policy">
+            <circle class="node-halo-outer" cx="200" cy="45" r="18"/>
             <circle class="node-halo" cx="200" cy="45" r="12"/>
             <circle class="node-dot"  cx="200" cy="45" r="6"/>
             <text x="200" y="32" text-anchor="middle">AI Policy</text>
           </g>
           <g class="node" data-theme="interpretability" role="button" tabindex="0" aria-label="Interpretability">
+            <circle class="node-halo-outer" cx="291" cy="98" r="18"/>
             <circle class="node-halo" cx="291" cy="98" r="12"/>
             <circle class="node-dot"  cx="291" cy="98" r="6"/>
             <text x="304" y="98" dy="0.35em" text-anchor="start">Interpretability</text>
           </g>
           <g class="node" data-theme="clinical-ai" role="button" tabindex="0" aria-label="Clinical AI">
+            <circle class="node-halo-outer" cx="291" cy="202" r="18"/>
             <circle class="node-halo" cx="291" cy="202" r="12"/>
             <circle class="node-dot"  cx="291" cy="202" r="6"/>
             <text x="304" y="202" dy="0.35em" text-anchor="start">Clinical AI</text>
           </g>
           <g class="node" data-theme="nlp" role="button" tabindex="0" aria-label="Natural Language Processing">
+            <circle class="node-halo-outer" cx="200" cy="255" r="18"/>
             <circle class="node-halo" cx="200" cy="255" r="12"/>
             <circle class="node-dot"  cx="200" cy="255" r="6"/>
             <text x="200" y="273" text-anchor="middle">NLP</text>
           </g>
           <g class="node" data-theme="llm-benchmarking" role="button" tabindex="0" aria-label="LLM Benchmarks">
+            <circle class="node-halo-outer" cx="109" cy="202" r="18"/>
             <circle class="node-halo" cx="109" cy="202" r="12"/>
             <circle class="node-dot"  cx="109" cy="202" r="6"/>
             <text x="96" y="202" dy="0.35em" text-anchor="end">LLM Benchmarks</text>
           </g>
           <g class="node" data-theme="recommendations" role="button" tabindex="0" aria-label="Recommendation Systems">
+            <circle class="node-halo-outer" cx="109" cy="98" r="18"/>
             <circle class="node-halo" cx="109" cy="98" r="12"/>
             <circle class="node-dot"  cx="109" cy="98" r="6"/>
             <text x="96" y="98" dy="0.35em" text-anchor="end">Recommendations</text>
@@ -167,48 +180,67 @@
     </div>
   </div>
 
-  <aside class="pullquote" aria-hidden="true">
-    <p>A model is only as good as <em>its impact.</em></p>
+  <aside class="belief" id="belief" aria-label="A working belief">
+    <p class="belief-label">
+      <span class="belief-dot-mark" aria-hidden="true"></span>
+      A working belief
+    </p>
+    <div class="belief-stack" aria-live="polite">
+      <p class="belief-line is-active"><em>Mechanistic interpretability is most useful in context.</em> It should be responsive to environmental feedback and emergence.</p>
+      <p class="belief-line">Safe AI means AI that is not just verifiably safe, but also <em>meaningfully beneficial to human goals.</em></p>
+      <p class="belief-line">Alignment has to be <em>grounded in human experience.</em> This means looking at human-AI interaction at a systems level along with fine-grained technical work.</p>
+      <p class="belief-line">Capability should answer <em>what people actually need.</em></p>
+    </div>
+    <ol class="belief-pager" aria-hidden="true">
+      <li class="belief-pager-dot is-active"></li>
+      <li class="belief-pager-dot"></li>
+      <li class="belief-pager-dot"></li>
+      <li class="belief-pager-dot"></li>
+    </ol>
   </aside>
 
-  <section id="about-me" data-section-num="02">
-    <p class="section-eyebrow">
-      <span class="section-num">02</span>
-      <span class="section-label">About</span>
-    </p>
-    <h2>About <em>Me</em></h2>
-    <div class="top-section">
-      <div class="image-container">
+  <section id="about-me">
+    <header class="section-head">
+      <p class="section-eyebrow">
+        <span class="section-num">02</span>
+        <span class="section-label">Intro</span>
+      </p>
+      <h2>About <em>Me</em></h2>
+    </header>
+    <div class="about-grid">
+      <div class="about-photo">
         <img src="bio-photo.jpg" alt="Sana Pandey">
       </div>
-      <div class="text-container">
+      <div class="about-text">
         <p>Hi, I'm Sana! I'm currently a first-year graduate student at <a href="https://www.csail.mit.edu/">MIT CSAIL</a> in EECS and Technology Policy, and a <a href="https://cdss.berkeley.edu/news/sana-pandey-uses-ai-shape-brighter-future-society">recent graduate of UC Berkeley</a> with degrees in computer science and cognitive science. I also minored in Mandarin, and co-captained the UC Berkeley Fencing team. I am supported by the NSF Graduate Research Fellowship.</p>
+        <p>Right now, my focus is on building interpretability methods that work at scale and predicting generalization failures through interpretability techniques, but I'm broadly interested in leveraging human data to build safer, more robust AI systems. I've worked previously on value-alignment in recommendation systems, LLM benchmarking, clinical AI, natural language processing, and technology policy. Feel free to read more on my <a href="resume.html">resume</a> :)</p>
+        <div class="affiliation-chips" aria-label="Affiliations">
+          <span class="chips-label">Affiliated with</span>
+          <a class="chip" href="https://www.csail.mit.edu/">MIT CSAIL</a>
+          <a class="chip" href="https://lingo.csail.mit.edu/">Language &amp; Intelligence Group</a>
+          <a class="chip" href="https://bair.berkeley.edu/">BAIR</a>
+          <a class="chip" href="https://humancompatible.ai/">CHAI</a>
+          <span class="chip chip--quiet">NSF GRFP</span>
+        </div>
       </div>
-    </div>
-    <div class="bio">
-      <p>Right now, my focus is on building interpretability methods that work at scale and predicting generalization failures through interpretability techniques, but I'm broadly interested in leveraging human data to build safer, more robust AI systems. I've worked previously on value-alignment in recommendation systems, LLM benchmarking, clinical AI, natural language processing, and technology policy. Feel free to read more on my <a href="resume.html">resume</a> :)</p>
-    </div>
-    <div class="affiliation-chips" aria-label="Affiliations">
-      <span class="chips-label">Affiliated with</span>
-      <a class="chip" href="https://lingo.csail.mit.edu/">Language &amp; Intelligence Group</a>
-      <a class="chip" href="https://bair.berkeley.edu/">BAIR</a>
-      <a class="chip" href="https://humancompatible.ai/">CHAI</a>
-      <span class="chip chip--quiet">NSF GRFP</span>
     </div>
   </section>
 
-  <section id="updates" data-section-num="03">
-    <p class="section-eyebrow">
-      <span class="section-num">03</span>
-      <span class="section-label">Updates</span>
-    </p>
-    <h2>Recent <em>Updates</em></h2>
-    <p class="section-lede">A running log of what I've been up to.</p>
+  <section id="updates">
+    <header class="section-head">
+      <p class="section-eyebrow">
+        <span class="section-num">03</span>
+        <span class="section-label">Lately</span>
+      </p>
+      <h2>Recent <em>Updates</em></h2>
+    </header>
 
     <div class="timeline">
       <div class="timeline-year timeline-year--current">
         <h3 class="timeline-year-label">2026</h3>
         <ul class="timeline-list">
+          <li class="timeline-item"><span class="timeline-date">April</span><p>I was selected as one of seven graduate students for <a href="https://www.anthropic.com/">Anthropic</a>'s inaugural AI x Social Impact Fellows cohort.</p></li>
+          <li class="timeline-item"><span class="timeline-date">March</span><p><a href="https://arxiv.org/abs/2603.20101">"Pitfalls in Evaluating Interpretability Agents"</a> (my first work with MIT CSAIL) was submitted to COLM 2026.</p></li>
           <li class="timeline-item"><span class="timeline-date">February</span><p>I was accepted into Harvard's AI Safety Policy Fellowship, run by Harvard AISST.</p></li>
           <li class="timeline-item"><span class="timeline-date">January</span><p>I started collaborating with Andrea de Varda and Ev Federenko on predicting generalization failures through mechanistic interpretability.</p></li>
         </ul>
@@ -218,6 +250,7 @@
         <h3 class="timeline-year-label">2025</h3>
         <ul class="timeline-list">
           <li class="timeline-item"><span class="timeline-date">November</span><p>I co-organized a Long-term Con, a follow-up to my 2023 workshop Non-Engagement Con, as a workshop at the <a href="https://ide.mit.edu/events/2025-conference-on-digital-experimentation-mit-codemit/">MIT Conference on Digital Experimentation</a>. The workshop brought together industry and platform experts to discuss methods that measure causal effects in long-term experiments.</p></li>
+          <li class="timeline-item"><span class="timeline-date">October</span><p>I joined the <a href="https://sciencepolicyreview.pubpub.org/">MIT Science Policy Review</a> as an associate editor.</p></li>
           <li class="timeline-item"><span class="timeline-date">September</span><p>I joined <a href="https://www.csail.mit.edu/">MIT CSAIL</a> and started work with Jacob Andreas and Antonio Torralba on scalable interpretability methods.</p></li>
           <li class="timeline-item"><span class="timeline-date">June</span><p>I was awarded the National Science Foundation Graduate Research Fellowship! The program funds graduate studies and stipends for three years, and will go towards my work at MIT.</p></li>
           <li class="timeline-item"><span class="timeline-date">April</span><p>I accepted an offer from MIT for a fully-funded graduate program! I'll be pursuing a dual degree in EECS and technology policy, with a focus on safe AI evaluations and development.</p></li>

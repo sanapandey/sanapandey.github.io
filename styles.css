@@ -15,8 +15,9 @@
   --color-text: #2F3020;
   --color-text-muted: #5a5b4d;
   --color-border: rgba(47, 48, 32, 0.12);
-  --content-max-width: 1100px;
+  --content-max-width: 1280px;
   --section-padding: clamp(32px, 6vw, 64px);
+  --section-padding-x: clamp(24px, 5vw, 80px);
   --space-section: clamp(40px, 8vw, 72px);
   --radius: 12px;
   --shadow-sm: 0 1px 3px rgba(47, 48, 32, 0.06);
@@ -95,7 +96,8 @@ html {
   .contact-item:hover,
   .contact-links a:hover,
   .timeline-item:hover,
-  #about-me .image-container:hover,
+  .about-photo:hover,
+  .chip:hover,
   button.resume-button:hover,
   header .logo a:hover {
     transform: none;
@@ -150,38 +152,49 @@ main.page-content {
 /* Sections: full-width flow, no card; gradient bands separate sections */
 section {
   position: relative;
-  padding: var(--section-padding) clamp(24px, 5vw, 48px);
+  padding: var(--section-padding) var(--section-padding-x);
   margin: 0 auto var(--space-section);
   max-width: var(--content-max-width);
 }
 
-/* Section eyebrow: small uppercase label with a numeral */
+/* Section eyebrow: small uppercase tag with a numeral.
+   Sits tight above the H2 — should read as a category cue, not a competing
+   heading. The light plate behind it (on .section-head) guarantees contrast,
+   so we can keep this small and quiet. */
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.6rem;
   font-family: var(--font-hero);
-  font-size: 0.78rem;
-  font-weight: 500;
+  font-size: 0.74rem;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--color-secondary);
-  margin: 0 0 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0 0 0.4rem;
   text-align: left;
 }
 
 .section-eyebrow .section-num {
   font-family: var(--font-hero);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-accent);
   font-size: 0.78rem;
-  letter-spacing: 0.05em;
-  padding-right: 0.6rem;
+  letter-spacing: 0.04em;
+  padding-right: 0.55rem;
   border-right: 1px solid var(--color-border);
 }
 
 .section-eyebrow .section-label {
   display: inline-block;
+  color: var(--color-text-muted);
+}
+
+/* Group eyebrow tightly to the H2 so they read as one title unit, then give
+   the lede real breathing room below — keeps the H2 from floating "centered"
+   between two short text rows. */
+.section-head .section-eyebrow {
+  margin: 0 0 0.2rem;
 }
 
 /* Section lede: muted intro paragraph under the H2 */
@@ -193,16 +206,27 @@ section {
   max-width: 60ch;
 }
 
-/* Unified H2 across all sections: bigger, with a small coral mark.
-   Italic Fraunces accent via <em> for editorial feel. */
+/* All H2s inside sections share the visual treatment */
+section h2 {
+  font-family: var(--font-hero);
+  font-size: clamp(2rem, 4.6vw, 2.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.0;
+  color: var(--color-primary);
+}
+
+section h2 em {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-primary);
+  letter-spacing: 0;
+}
+
+/* Direct-child H2 (pages without a section-head wrapper): get the coral mark */
 section > h2 {
   position: relative;
-  font-family: var(--font-hero);
-  font-size: clamp(1.85rem, 4.2vw, 2.5rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  color: var(--color-primary);
   margin: 0 0 1.25rem;
   padding-left: 1rem;
 }
@@ -218,36 +242,28 @@ section > h2::before {
   border-radius: 2px;
 }
 
-section > h2 em {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--color-secondary);
-  letter-spacing: 0;
-}
-
-/* Large faded section numeral as background watermark */
-section[data-section-num]::after {
-  content: attr(data-section-num);
-  position: absolute;
-  top: clamp(8px, 2vw, 20px);
-  right: clamp(8px, 3vw, 32px);
-  font-family: var(--font-hero);
-  font-size: clamp(6rem, 14vw, 11rem);
-  font-weight: 700;
-  line-height: 0.85;
-  color: var(--color-primary);
-  opacity: 0.045;
-  pointer-events: none;
-  z-index: 0;
-  letter-spacing: -0.06em;
-  user-select: none;
-}
-
-section[data-section-num] > * {
+/* Unified section header: eyebrow + H2 + lede sit on their own light "plate"
+   so the title always reads cleanly, regardless of section gradients or the
+   scroll wash drifting darker behind it. */
+.section-head {
   position: relative;
-  z-index: 1;
+  padding: 1rem 1.5rem 1.1rem 1.25rem;
+  margin-bottom: 1.75rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.62);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 0 rgba(47, 48, 32, 0.04);
 }
+
+.section-head h2 {
+  margin: 0;
+}
+
+.section-head .section-lede {
+  margin: 0.95rem 0 0;
+}
+
 
 /* Reveal-on-scroll: elements start hidden, fade up when in view */
 .reveal {
@@ -329,10 +345,10 @@ section:first-of-type {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(24px, 4vw, 56px);
+  gap: clamp(24px, 4vw, 64px);
   max-width: var(--content-max-width);
   margin: var(--space-section) auto var(--space-section);
-  padding: 0 clamp(24px, 5vw, 48px);
+  padding: 0 var(--section-padding-x);
   align-items: flex-start;
 }
 
@@ -381,7 +397,7 @@ section:first-of-type {
 
 /* ========== Hero (left column) ========== */
 .landing-row .hero {
-  max-width: 28em;
+  max-width: 38em;
   margin: 0;
   text-align: left;
   opacity: 0;
@@ -409,8 +425,8 @@ section:first-of-type {
 .landing-row .hero h1 em {
   font-family: var(--font-accent);
   font-style: italic;
-  font-weight: 400;
-  color: var(--color-secondary);
+  font-weight: 500;
+  color: var(--color-primary);
   letter-spacing: 0;
 }
 
@@ -500,7 +516,7 @@ section:first-of-type {
   overflow: visible;
 }
 
-/* Edges: subtle by default, brighten when incident to active node */
+/* Edges: subtle by default, brighten + flow when incident to active node */
 #research-directions .research-network-viz .edge {
   stroke: var(--color-border);
   stroke-width: 1;
@@ -513,44 +529,84 @@ section:first-of-type {
   stroke: var(--color-accent);
   stroke-width: 1.6;
   opacity: 1;
+  stroke-dasharray: 4 7;
+  animation: edgeFlow 1.4s linear infinite;
+}
+
+@keyframes edgeFlow {
+  to { stroke-dashoffset: -22; }
 }
 
 #research-directions .research-network-viz .ring-guide {
-  opacity: 0.5;
+  opacity: 0.55;
+}
+
+#research-directions .research-network-viz .ring-guide--outer {
+  opacity: 0.35;
+}
+
+/* Always-on subtle glow behind the center node */
+#research-directions .research-network-viz .center-glow {
+  fill: var(--color-secondary);
+  pointer-events: none;
+}
+
+#research-directions .research-network-viz .center-glow--lg { opacity: 0.05; }
+#research-directions .research-network-viz .center-glow--md { opacity: 0.09; }
+
+@media (prefers-reduced-motion: reduce) {
+  #research-directions .research-network-viz .edge.active {
+    animation: none;
+  }
 }
 
 #research-directions .research-network-viz .node {
   cursor: pointer;
 }
 
-/* Soft halo behind dot — invisible by default, blooms on active/hover */
-#research-directions .research-network-viz .node .node-halo {
+/* Layered halos: inner halo blooms on hover/active, outer halo ripples out on active */
+#research-directions .research-network-viz .node .node-halo,
+#research-directions .research-network-viz .node .node-halo-outer {
   fill: var(--color-accent);
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-  transform: scale(0.6);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transform: scale(0.55);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
 }
 
 #research-directions .research-network-viz .node:hover .node-halo {
-  opacity: 0.15;
+  opacity: 0.16;
   transform: scale(1);
 }
 
 #research-directions .research-network-viz .node.active .node-halo {
-  opacity: 0.22;
+  opacity: 0.24;
   transform: scale(1);
-  animation: nodePulse 2.4s ease-in-out infinite;
+  animation: nodePulse 2.6s ease-in-out infinite;
+}
+
+#research-directions .research-network-viz .node.active .node-halo-outer {
+  opacity: 0.18;
+  transform: scale(1);
+  animation: haloRipple 2.6s ease-out infinite;
 }
 
 @keyframes nodePulse {
   0%, 100% { opacity: 0.22; transform: scale(1); }
-  50%      { opacity: 0.35; transform: scale(1.18); }
+  50%      { opacity: 0.36; transform: scale(1.16); }
+}
+
+@keyframes haloRipple {
+  0%   { opacity: 0.22; transform: scale(0.7); }
+  60%  { opacity: 0.04; transform: scale(1.25); }
+  100% { opacity: 0;    transform: scale(1.55); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #research-directions .research-network-viz .node.active .node-halo {
+  #research-directions .research-network-viz .node.active .node-halo,
+  #research-directions .research-network-viz .node.active .node-halo-outer {
     animation: none;
   }
 }
@@ -617,48 +673,71 @@ section:first-of-type {
   pointer-events: none;
 }
 
+/* Panel uses grid-stack so all descriptions share the same cell. The panel
+   itself is invisible — it just reserves the height of the tallest description
+   so the page never shifts. The visible card (bg + border) lives on each
+   description and is sized to its own content via align-self: start. Result:
+   short descriptions look like a small card; long ones grow naturally; the
+   layout below stays anchored either way. */
 #research-panel {
-  min-height: 6.5rem;
+  display: grid;
   margin-top: 1.5rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--color-primary-soft);
-  border-radius: var(--radius);
-  border-left: 4px solid var(--color-accent);
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-#research-panel.visible {
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
-#research-panel .research-description {
-  display: none;
+#research-panel > .hint,
+#research-panel > .research-description {
+  grid-row: 1;
+  grid-column: 1;
+  align-self: start;
   margin: 0;
+  padding: 0.95rem 1.15rem;
+  background: var(--color-primary-soft);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
-#research-panel .research-description.visible {
-  display: block;
+/* Hint is the default state until a theme is shown */
+#research-panel > .hint {
+  opacity: 1;
+  visibility: visible;
+}
+
+#research-panel.visible > .hint {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#research-panel > .research-description.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 #research-panel h3 {
-  font-size: 1.15rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.35rem;
   color: var(--color-accent);
+  letter-spacing: -0.005em;
 }
 
 #research-panel p {
-  font-size: 1rem;
+  font-size: 0.95rem;
   margin: 0;
   color: var(--color-text);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 #research-panel .hint {
   color: var(--color-text-muted);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   margin: 0;
 }
 
@@ -1056,42 +1135,95 @@ h2 {
   }
 }
 
-/* ========== Pullquote ========== */
-.pullquote {
-  max-width: 760px;
+/* ========== Belief block (rotating statements) ========== */
+.belief {
+  max-width: var(--content-max-width);
   margin: var(--space-section) auto;
-  padding: clamp(24px, 5vw, 56px) clamp(24px, 5vw, 48px);
-  text-align: center;
+  padding: clamp(24px, 5vw, 48px) var(--section-padding-x);
   position: relative;
 }
 
-.pullquote::before,
-.pullquote::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 32px;
-  height: 1px;
-  background: var(--color-accent);
+.belief-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-hero);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-secondary);
+  margin: 0 0 1.1rem;
 }
 
-.pullquote::before { top: 0; }
-.pullquote::after { bottom: 0; }
+.belief-dot-mark {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(217, 104, 70, 0.12);
+  flex-shrink: 0;
+}
 
-.pullquote p {
+/* Grid-stack: all lines occupy the same cell, container sizes to tallest */
+.belief-stack {
+  display: grid;
+  max-width: 56rem;
+}
+
+.belief-stack > .belief-line {
+  grid-row: 1;
+  grid-column: 1;
   font-family: var(--font-accent);
-  font-size: clamp(1.45rem, 3vw, 2rem);
-  line-height: 1.4;
+  font-size: clamp(1.55rem, 3.4vw, 2.4rem);
+  line-height: 1.25;
   color: var(--color-primary);
   margin: 0;
   font-weight: 400;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
 }
 
-.pullquote em {
+.belief-stack > .belief-line.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.belief-line em {
   font-style: italic;
   color: var(--color-accent);
+}
+
+.belief-pager {
+  display: flex;
+  gap: 0.45rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+}
+
+.belief-pager-dot {
+  width: 18px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-border);
+  transition: background var(--transition), width var(--transition);
+}
+
+.belief-pager-dot.is-active {
+  background: var(--color-accent);
+  width: 28px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .belief-stack > .belief-line {
+    transition: none;
+    transform: none;
+  }
 }
 
 /* ========== Affiliation chips ========== */
@@ -1416,10 +1548,8 @@ footer p {
 
 /* Header */
 header {
-  background: rgba(47, 48, 32, 0.78);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  padding: 0.9rem clamp(24px, 5vw, 48px);
+  background: var(--color-primary);
+  padding: 0.9rem clamp(24px, 5vw, 80px);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -1427,20 +1557,12 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 4px 18px rgba(47, 48, 32, 0.08);
-  transition: background var(--transition), box-shadow var(--transition);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 4px 18px rgba(47, 48, 32, 0.12);
+  transition: box-shadow var(--transition);
 }
 
 header.is-scrolled {
-  background: rgba(47, 48, 32, 0.92);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 28px rgba(47, 48, 32, 0.18);
-}
-
-/* Fallback for browsers without backdrop-filter support */
-@supports not ((backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px))) {
-  header {
-    background: var(--color-primary);
-  }
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06), 0 10px 32px rgba(47, 48, 32, 0.22);
 }
 
 header .logo {
@@ -1487,7 +1609,7 @@ nav ul {
 nav ul li a {
   position: relative;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.95);
+  color: #ffffff;
   font-size: 1rem;
   font-weight: 500;
   padding: 0.4rem 0.2rem;
@@ -1544,73 +1666,81 @@ nav ul li a.active::after {
   transition: width 0.12s ease-out;
 }
 
-/* Media query for smaller screens */
+/* Mobile header: wrap horizontally instead of stacking vertically so the
+   sticky bar stays short and doesn't eat half the viewport. */
 @media (max-width: 768px) {
   header {
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    padding: 0.7rem 1rem;
+    min-height: 0;
+  }
+
+  header .logo {
+    justify-content: center;
   }
 
   nav ul {
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(12px, 3vw, 20px);
   }
 
   nav ul li {
     margin-left: 0;
-    margin-top: 10px;
+    margin-top: 0;
   }
 }
 
-/* About Me Section */
+@media (max-width: 480px) {
+  .pronunciation-badge {
+    display: none;
+  }
+
+  .section-head {
+    padding: 0.85rem 1rem 0.95rem 1rem;
+  }
+}
+
+/* ========== About Me: horizontal 2-column grid ========== */
 #about-me {
   display: flex;
   flex-direction: column;
   margin-top: var(--space-section);
 }
 
-#about-me .top-section {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  margin-bottom: 1.5rem;
-  gap: 1.5rem;
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(160px, 220px) 1fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
 }
 
-#about-me .image-container {
-  width: 140px;
-  height: 140px;
-  min-width: 140px;
+.about-photo {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 1;
   border-radius: 50%;
   overflow: hidden;
-  flex-shrink: 0;
   border: 3px solid var(--color-border);
   transition: transform var(--transition), box-shadow var(--transition);
+  margin-top: 0.25rem;
 }
 
-#about-me .image-container:hover {
+.about-photo:hover {
   transform: scale(1.03);
   box-shadow: var(--shadow-md);
 }
 
-#about-me img {
+.about-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-#about-me .text-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-
-#about-me .text-container p {
+.about-text > p {
   font-size: 1.08em;
   line-height: 1.65;
   color: var(--color-text);
@@ -1618,13 +1748,24 @@ nav ul li a.active::after {
   text-align: left;
 }
 
-#about-me .bio {
-  font-size: 1.05em;
-  line-height: 1.65;
-  color: var(--color-text);
+.about-text > p + p {
   margin-top: 1.25rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--color-border);
+}
+
+.about-text .affiliation-chips {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+  .about-photo {
+    margin: 0 0 1rem;
+  }
 }
 
 
@@ -1660,16 +1801,7 @@ button.resume-button:hover {
 /* Responsive */
 @media (max-width: 768px) {
   section {
-    padding: clamp(20px, 4vw, 28px);
-  }
-
-  #about-me .top-section {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  #about-me .image-container {
-    margin: 0 auto;
+    padding: clamp(20px, 4vw, 28px) clamp(20px, 4vw, 32px);
   }
 
   nav ul {

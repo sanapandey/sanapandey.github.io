@@ -42,7 +42,7 @@
   function initRevealOnScroll() {
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var targets = document.querySelectorAll(
-      'section, .landing-row, .timeline-year, .pub-item, .contact-item, .blog-list li'
+      'section, .landing-row, .belief, .timeline-year, .pub-item, .contact-item, .blog-list li'
     );
     if (!targets.length) return;
 
@@ -76,6 +76,63 @@
     });
   }
 
+  // Rotating "working belief" statements with crossfade + pager dots
+  function initBeliefRotator() {
+    var belief = document.getElementById('belief');
+    if (!belief) return;
+    var lines = belief.querySelectorAll('.belief-line');
+    var dots = belief.querySelectorAll('.belief-pager-dot');
+    if (lines.length < 2) return;
+
+    var ROTATE_MS = 6500;
+    var index = 0;
+    var timer = null;
+    var paused = false;
+
+    function show(i) {
+      lines.forEach(function (el, n) {
+        el.classList.toggle('is-active', n === i);
+      });
+      dots.forEach(function (el, n) {
+        el.classList.toggle('is-active', n === i);
+      });
+    }
+
+    function advance() {
+      if (paused) return;
+      index = (index + 1) % lines.length;
+      show(index);
+    }
+
+    function start() {
+      if (timer) return;
+      timer = setInterval(advance, ROTATE_MS);
+    }
+
+    function stop() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    // Pause when not visible (page hidden) to be polite
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { paused = true; stop(); }
+      else { paused = false; start(); }
+    });
+
+    // Allow click-on-dot navigation
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        index = i;
+        show(index);
+        stop();
+        start();
+      });
+      dot.style.cursor = 'pointer';
+    });
+
+    start();
+  }
+
   // Collapsible older years on the home timeline
   function initTimelineToggle() {
     var toggle = document.getElementById('timeline-toggle');
@@ -95,4 +152,5 @@
   initHeaderScrollState();
   initRevealOnScroll();
   initTimelineToggle();
+  initBeliefRotator();
 })();
