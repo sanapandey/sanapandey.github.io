@@ -190,11 +190,10 @@ section {
   color: var(--color-text-muted);
 }
 
-/* Group eyebrow tightly to the H2 so they read as one title unit, then give
-   the lede real breathing room below — keeps the H2 from floating "centered"
-   between two short text rows. */
+/* Eyebrow sits as a small chapter mark above the H2 — gap is comfortable
+   but not so wide that the two feel separated. */
 .section-head .section-eyebrow {
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.55rem;
 }
 
 /* Section lede: muted intro paragraph under the H2 */
@@ -207,11 +206,10 @@ section {
 }
 
 /* All H2s inside sections share the visual treatment.
-   Unified in Fraunces (display serif) so the shift to the italic accent is a
-   single-axis change (style, not family + weight). Reads editorial and confident
-   without the bold-sans → italic-serif weight jump. */
+   Back on Syne (matches the H1 and the rest of the site's display type), but
+   at weight 600 instead of 700 so it still reads subtler than the original. */
 section h2 {
-  font-family: var(--font-accent);
+  font-family: var(--font-hero);
   font-size: clamp(2.05rem, 4.6vw, 2.9rem);
   font-weight: 600;
   letter-spacing: -0.012em;
