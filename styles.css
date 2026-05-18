@@ -206,22 +206,17 @@ section {
   max-width: 60ch;
 }
 
-/* All H2s inside sections share the visual treatment */
+/* All H2s inside sections share the visual treatment.
+   Unified in Fraunces (display serif) so the shift to the italic accent is a
+   single-axis change (style, not family + weight). Reads editorial and confident
+   without the bold-sans → italic-serif weight jump. */
 section h2 {
-  font-family: var(--font-hero);
-  font-size: clamp(2rem, 4.6vw, 2.85rem);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.0;
-  color: var(--color-primary);
-}
-
-section h2 em {
   font-family: var(--font-accent);
-  font-style: italic;
-  font-weight: 500;
+  font-size: clamp(2.05rem, 4.6vw, 2.9rem);
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.05;
   color: var(--color-primary);
-  letter-spacing: 0;
 }
 
 /* Direct-child H2 (pages without a section-head wrapper): get the coral mark */
@@ -297,44 +292,9 @@ section > h2::before {
 .timeline-year.in-view .timeline-item:nth-child(7) { transition-delay: 0.35s; }
 .timeline-year.in-view .timeline-item:nth-child(8) { transition-delay: 0.4s; }
 
-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(180deg,
-    rgba(89, 98, 53, 0.04) 0%,
-    rgba(89, 98, 53, 0.02) 25%,
-    transparent 50%,
-    rgba(89, 98, 53, 0.02) 75%,
-    rgba(89, 98, 53, 0.04) 100%);
-}
-
-#research-directions::before {
-  background: transparent;
-}
-
-#about-me::before {
-  background: linear-gradient(180deg,
-    rgba(89, 98, 53, 0.05) 0%,
-    rgba(89, 98, 53, 0.03) 20%,
-    rgba(217, 104, 70, 0.02) 45%,
-    rgba(217, 104, 70, 0.04) 70%,
-    rgba(217, 104, 70, 0.06) 100%);
-}
-
-#updates::before {
-  background: linear-gradient(180deg,
-    rgba(217, 104, 70, 0.04) 0%,
-    rgba(217, 104, 70, 0.02) 25%,
-    transparent 55%,
-    rgba(205, 203, 214, 0.15) 100%);
-}
+/* Sections no longer paint their own gradient bands — the body's page-wide
+   ambient gradient + scroll wash provide continuous color depth without
+   creating visible section boundaries. */
 
 section:first-of-type {
   margin-top: var(--space-section);
@@ -350,23 +310,6 @@ section:first-of-type {
   margin: var(--space-section) auto var(--space-section);
   padding: 0 var(--section-padding-x);
   align-items: flex-start;
-}
-
-.landing-row::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(180deg,
-    rgba(89, 98, 53, 0.04) 0%,
-    rgba(89, 98, 53, 0.02) 30%,
-    transparent 60%,
-    rgba(205, 203, 214, 0.2) 100%);
 }
 
 .hero-col {
@@ -393,6 +336,17 @@ section:first-of-type {
     max-width: none;
     text-align: left;
   }
+
+  /* Promote hero-col's children to direct landing-row children so we can
+     reorder them. Mobile reading order should be: hero → graph → panel,
+     instead of the desktop nesting (hero + panel on the left, graph on the right). */
+  .landing-row .hero-col {
+    display: contents;
+  }
+
+  .landing-row .hero { order: 1; }
+  .landing-row .research-col { order: 2; }
+  .landing-row #research-panel { order: 3; margin-top: 0.5rem; }
 }
 
 /* ========== Hero (left column) ========== */
@@ -420,14 +374,6 @@ section:first-of-type {
   margin-bottom: 0;
   color: var(--color-primary);
   line-height: 1.05;
-}
-
-.landing-row .hero h1 em {
-  font-family: var(--font-accent);
-  font-style: italic;
-  font-weight: 500;
-  color: var(--color-primary);
-  letter-spacing: 0;
 }
 
 .hero-meta {
@@ -1194,7 +1140,7 @@ h2 {
 }
 
 .belief-line em {
-  font-style: italic;
+  font-style: normal;
   color: var(--color-accent);
 }
 
